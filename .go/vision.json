@@ -1,0 +1,25 @@
+{
+  "schema": "go-workflow.repo-local.vision.v1",
+  "kind": "vision",
+  "project": "guru-benchmark",
+  "status": "active",
+  "north_star": "Make world-class technical judgment reusable, source-grounded, updateable, and executable without reducing experts to role-play.",
+  "wedge": "A transparent, versioned AI-engineering benchmark that produces one Guru Verdict plus clarification when the council materially disagrees.",
+  "target_user": "Developers, technical leaders, and AI agents evaluating architecture, implementation, and product-engineering decisions.",
+  "core_promise": "Turn a technical question or design into a traceable council synthesis, scorecard, disagreement map, and next actions.",
+  "product_principles": [
+    "Evidence before persona: never invent an expert opinion when sources or confidence are insufficient.",
+    "Context before consensus: weight advice by domain relevance and the real operating constraints.",
+    "Hard failures cannot be averaged away.",
+    "Old benchmark snapshots remain reproducible after the living standard evolves."
+  ],
+  "non_goals": [
+    "Impersonating living people or generating fabricated quotations.",
+    "Declaring one guru universally correct or assigning equal weight regardless of domain.",
+    "Shipping a hosted SaaS, model training pipeline, or production evaluator during repository foundation."
+  ],
+  "success_metrics": [
+    "A fresh clone can validate all contracts and identify the next claimable implementation task with one documented command.",
+    "Every Guru Verdict can identify benchmark version, source cutoff, contributing lenses, confidence, hard-gate state, and disagreement status."
+  ]
+}

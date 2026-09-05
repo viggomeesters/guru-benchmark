@@ -1,0 +1,31 @@
+{
+  "schema": "go-workflow.repo-local.architecture-principles.v1",
+  "kind": "architecture_principles",
+  "project": "guru-benchmark",
+  "principles": [
+    {
+      "id": "evidence-before-persona",
+      "statement": "Expert positions require dated source evidence or an explicit inference/abstention label.",
+      "rationale": "Prevents celebrity fanfiction from masquerading as engineering judgment.",
+      "enforcement": "Schema validation and source-confidence gates."
+    },
+    {
+      "id": "weighted-consensus",
+      "statement": "Council synthesis uses domain relevance and confidence rather than equal voting.",
+      "rationale": "Specialists should matter more in their domains without silencing counterweights.",
+      "enforcement": "Evaluation contract records weights, abstentions, dispersion, and rationale."
+    },
+    {
+      "id": "fail-closed",
+      "statement": "Missing evidence or a failed hard gate stays visible and caps the verdict.",
+      "rationale": "A polished average must never hide a critical weakness.",
+      "enforcement": "Validators reject unsupported quotes and scorecards report blockers before totals."
+    },
+    {
+      "id": "temporal-reproducibility",
+      "statement": "Benchmark and lens snapshots are immutable and dated.",
+      "rationale": "A September 2026 verdict must remain explainable after later updates.",
+      "enforcement": "Versioned schemas, source cutoffs, and changelogs."
+    }
+  ]
+}

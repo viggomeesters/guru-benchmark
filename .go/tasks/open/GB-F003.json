@@ -1,0 +1,42 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-F003",
+  "project": "guru-benchmark",
+  "status": "open",
+  "summary": "Create and visually verify repository hero and social preview",
+  "description": "Create and visually verify repository hero and social preview",
+  "order": 3,
+  "scope": {
+    "read": [
+      ".go/**",
+      "README.md",
+      "docs/**",
+      "cli/go.py",
+      "tests/**",
+      "Makefile"
+    ],
+    "modify": [
+      ".go/**",
+      "README.md",
+      "docs/**",
+      "cli/go.py",
+      "tests/**",
+      "Makefile"
+    ]
+  },
+  "acceptance": [
+    "Outcome is observable: Create and visually verify repository hero and social preview.",
+    "All task verification commands pass and evidence is recorded."
+  ],
+  "verification": [
+    "make check"
+  ],
+  "claim": {
+    "agent": null,
+    "claimed_at": null
+  },
+  "evidence": []
+}

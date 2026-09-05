@@ -1,0 +1,48 @@
+{
+  "schema": "go-workflow.repo-local.hierarchy.v1",
+  "kind": "hierarchy",
+  "project": "guru-benchmark",
+  "epics": [
+    {
+      "id": "foundation",
+      "title": "Professional public repository foundation",
+      "features": [],
+      "tasks": [
+        "GB-F001",
+        "GB-F002",
+        "GB-F003",
+        "GB-F004"
+      ]
+    },
+    {
+      "id": "engine",
+      "title": "Guru Benchmark evaluation engine",
+      "features": [],
+      "tasks": []
+    },
+    {
+      "id": "evidence",
+      "title": "Source-grounded guru lens corpus",
+      "features": [],
+      "tasks": []
+    },
+    {
+      "id": "interfaces",
+      "title": "CLI and agent integration",
+      "features": [],
+      "tasks": []
+    },
+    {
+      "id": "workflow",
+      "title": "Workflow",
+      "features": [
+        {
+          "id": "repo-local-workflow",
+          "title": "Repo-local workflow",
+          "tasks": []
+        }
+      ],
+      "tasks": []
+    }
+  ]
+}

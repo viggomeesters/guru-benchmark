@@ -1,0 +1,42 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-F004",
+  "project": "guru-benchmark",
+  "status": "open",
+  "summary": "Audit public safety, publish repository, and prove fresh-clone onboarding",
+  "description": "Audit public safety, publish repository, and prove fresh-clone onboarding",
+  "order": 4,
+  "scope": {
+    "read": [
+      ".go/**",
+      "README.md",
+      "docs/**",
+      "cli/go.py",
+      "tests/**",
+      "Makefile"
+    ],
+    "modify": [
+      ".go/**",
+      "README.md",
+      "docs/**",
+      "cli/go.py",
+      "tests/**",
+      "Makefile"
+    ]
+  },
+  "acceptance": [
+    "Outcome is observable: Audit public safety, publish repository, and prove fresh-clone onboarding.",
+    "All task verification commands pass and evidence is recorded."
+  ],
+  "verification": [
+    "make check"
+  ],
+  "claim": {
+    "agent": null,
+    "claimed_at": null
+  },
+  "evidence": []
+}
