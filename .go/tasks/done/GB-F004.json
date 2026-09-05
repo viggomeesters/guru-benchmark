@@ -1,0 +1,91 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-F004",
+  "project": "guru-benchmark",
+  "status": "done",
+  "summary": "Audit public safety, publish repository, and prove fresh-clone onboarding",
+  "description": "Audit public safety, publish repository, and prove fresh-clone onboarding",
+  "order": 4,
+  "scope": {
+    "read": [
+      ".go/**",
+      "README.md",
+      "docs/**",
+      "cli/go.py",
+      "tests/**",
+      "Makefile"
+    ],
+    "modify": [
+      ".go/**",
+      "README.md",
+      "docs/**",
+      "scripts/**",
+      "tests/**",
+      ".github/**",
+      "CHANGELOG.md",
+      "Makefile"
+    ]
+  },
+  "acceptance": [
+    "Outcome is observable: Audit public safety, publish repository, and prove fresh-clone onboarding.",
+    "All task verification commands pass and evidence is recorded."
+  ],
+  "verification": [
+    "make check"
+  ],
+  "claim": {
+    "agent": "hermes",
+    "claimed_at": "2026-09-05T21:46:28+02:00"
+  },
+  "evidence": [
+    {
+      "schema": "go-workflow.finish-evidence.v1",
+      "created_at": "2026-09-05T21:50:30+02:00",
+      "task_id": "GB-F004",
+      "agent": "hermes",
+      "summary": "changed_files=README.md,docs/vision.json,docs/governance.md,docs/visual-identity.md,scripts/validate_docs.py,CHANGELOG.md,.go/tasks/active/GB-F004.json,.go/runs/events.jsonl; verification=make check && repo_complete_bootstrap.py --public --mode validate && full-history privacy scan && fresh-clone make check; result=passed repo-complete JA missing_hard_count=0 history findings=0 fresh clone clean; critic=public-readiness audit found and repaired schema principle README section hero-render and content-first defects; runtime=hermes; billing_mode=subscription",
+      "changed_files": [
+        "README.md",
+        "docs/vision.json",
+        "docs/governance.md",
+        "docs/visual-identity.md",
+        "scripts/validate_docs.py",
+        "CHANGELOG.md",
+        ".go/tasks/active/GB-F004.json",
+        ".go/runs/events.jsonl"
+      ],
+      "no_diff": false,
+      "verification": {
+        "command": "make check && repo_complete_bootstrap.py --public --mode validate && full-history privacy scan && fresh-clone make check",
+        "result": "passed repo-complete JA missing_hard_count=0 history findings=0 fresh clone clean"
+      },
+      "runtime": {
+        "agent": "hermes",
+        "runtime": "hermes",
+        "model": null,
+        "billing_mode": "subscription"
+      },
+      "usage": {
+        "schema": "go-workflow.usage-attribution.v1",
+        "runtime_kind": "hermes",
+        "billing_mode": "subscription",
+        "owner": "hermes",
+        "model": null,
+        "token_estimate": null,
+        "api_equivalent_cost_usd": null,
+        "provider_invoice_cost_usd": null,
+        "cost_label": "api_equivalent_not_invoice_cost"
+      },
+      "review": {
+        "outcome": "public-readiness audit found and repaired schema principle README section hero-render and content-first defects",
+        "skip_reason": null
+      }
+    }
+  ],
+  "work_status": "completed",
+  "review_status": "review",
+  "review_history": []
+}
