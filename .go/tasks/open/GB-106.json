@@ -1,0 +1,36 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-106",
+  "project": "guru-benchmark",
+  "status": "open",
+  "summary": "Build Guru Verdict renderer",
+  "description": "Render the complete public output contract from synthetic evaluated inputs.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**"
+    ],
+    "modify": [
+      "src/guru_benchmark/**",
+      "tests/golden/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "A synthetic evaluation renders every required output section with exact provenance and no persona-style claims."
+  ],
+  "verification": [
+    "python3 -m unittest tests.test_renderer -v && make check"
+  ],
+  "claim": {
+    "agent": null,
+    "claimed_at": null
+  },
+  "work_status": "pending",
+  "review_status": "none",
+  "review_history": [],
+  "evidence": []
+}

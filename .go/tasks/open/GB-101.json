@@ -1,0 +1,36 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-101",
+  "project": "guru-benchmark",
+  "status": "open",
+  "summary": "Define expert lens and evidence schemas",
+  "description": "Define immutable expert lens, evidence class, provenance, confidence, validity, objection, and abstention contracts.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**"
+    ],
+    "modify": [
+      "schemas/**",
+      "lenses/fixtures/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "Direct evidence, built patterns, labeled inference, confidence, source references, objections, and abstention boundaries validate; unsupported claims fail."
+  ],
+  "verification": [
+    "python3 -m unittest tests.test_lens_contract -v && make check"
+  ],
+  "claim": {
+    "agent": null,
+    "claimed_at": null
+  },
+  "work_status": "pending",
+  "review_status": "none",
+  "review_history": [],
+  "evidence": []
+}

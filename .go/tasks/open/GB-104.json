@@ -1,0 +1,36 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-104",
+  "project": "guru-benchmark",
+  "status": "open",
+  "summary": "Implement hard-gate and score-cap semantics",
+  "description": "Apply hold, conditional-go, and score-cap effects before aggregate scoring.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**"
+    ],
+    "modify": [
+      "src/guru_benchmark/**",
+      "tests/fixtures/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "Gate effects run before aggregation and cannot be erased by high dimension scores."
+  ],
+  "verification": [
+    "python3 -m unittest tests.test_hard_gates -v && make check"
+  ],
+  "claim": {
+    "agent": null,
+    "claimed_at": null
+  },
+  "work_status": "pending",
+  "review_status": "none",
+  "review_history": [],
+  "evidence": []
+}

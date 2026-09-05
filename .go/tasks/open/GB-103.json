@@ -1,0 +1,36 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-103",
+  "project": "guru-benchmark",
+  "status": "open",
+  "summary": "Implement deterministic weighting and weighted median",
+  "description": "Implement transparent weight normalization, abstention handling, and deterministic weighted-median scoring.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**"
+    ],
+    "modify": [
+      "src/guru_benchmark/**",
+      "tests/fixtures/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "Weights normalize deterministically; abstentions contribute no score; ties are documented and fixture-proven."
+  ],
+  "verification": [
+    "python3 -m unittest tests.test_aggregation -v && make check"
+  ],
+  "claim": {
+    "agent": null,
+    "claimed_at": null
+  },
+  "work_status": "pending",
+  "review_status": "none",
+  "review_history": [],
+  "evidence": []
+}

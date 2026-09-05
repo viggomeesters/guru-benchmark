@@ -18,19 +18,31 @@
       "id": "engine",
       "title": "Guru Benchmark evaluation engine",
       "features": [],
-      "tasks": []
+      "tasks": [
+        "GB-101",
+        "GB-102",
+        "GB-103",
+        "GB-104",
+        "GB-105",
+        "GB-106"
+      ]
     },
     {
       "id": "evidence",
       "title": "Source-grounded guru lens corpus",
       "features": [],
-      "tasks": []
+      "tasks": [
+        "GB-107",
+        "GB-109"
+      ]
     },
     {
       "id": "interfaces",
       "title": "CLI and agent integration",
       "features": [],
-      "tasks": []
+      "tasks": [
+        "GB-108"
+      ]
     },
     {
       "id": "workflow",

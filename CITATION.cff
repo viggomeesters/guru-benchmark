@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use Guru Benchmark in research or engineering work, cite this repository."
+title: "Guru Benchmark"
+type: software
+authors:
+  - family-names: "Meesters"
+    given-names: "Viggo"
+repository-code: "https://github.com/viggomeesters/guru-benchmark"
+license: MIT
+version: 0.1.0
+date-released: 2026-09-05
+abstract: "A living, source-grounded expert council for repeatable technical judgment."

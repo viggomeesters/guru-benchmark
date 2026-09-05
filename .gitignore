@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+coverage/
+.venv/
+venv/
+
+# JavaScript and generated builds
+node_modules/
+dist/
+build/
+.tmp/
+tmp/
+.cache/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+secrets/
+
+# Runtime and private data
+evaluations/
+reports/
+downloads/
+source-cache/
+private/
+local-context/
+*.sqlite
+*.sqlite3
+*.db
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Rendered verification artifacts
+artifacts/rendered/

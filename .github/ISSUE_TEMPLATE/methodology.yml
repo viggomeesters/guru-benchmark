@@ -1,0 +1,33 @@
+name: Methodology or evidence issue
+description: Report an attribution, source, weighting, or benchmark-method problem
+title: "[methodology]: "
+labels: [methodology]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Identify the exact public claim, source reference, contract, or behavior at issue.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public evidence
+      description: Provide stable public primary sources where possible. Do not paste private or copyrighted corpora.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected correction
+      description: Explain the smallest verifiable change and whether it requires a new immutable version.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-safety check
+      options:
+        - label: This report contains no secrets, private context, or exploit details.
+          required: true
