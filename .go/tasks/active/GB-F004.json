@@ -5,7 +5,7 @@
   "shareable_delivery": "auto",
   "id": "GB-F004",
   "project": "guru-benchmark",
-  "status": "open",
+  "status": "active",
   "summary": "Audit public safety, publish repository, and prove fresh-clone onboarding",
   "description": "Audit public safety, publish repository, and prove fresh-clone onboarding",
   "order": 4,
@@ -22,8 +22,10 @@
       ".go/**",
       "README.md",
       "docs/**",
-      "cli/go.py",
+      "scripts/**",
       "tests/**",
+      ".github/**",
+      "CHANGELOG.md",
       "Makefile"
     ]
   },
@@ -35,8 +37,11 @@
     "make check"
   ],
   "claim": {
-    "agent": null,
-    "claimed_at": null
+    "agent": "hermes",
+    "claimed_at": "2026-09-05T21:46:28+02:00"
   },
-  "evidence": []
+  "evidence": [],
+  "work_status": "in_progress",
+  "review_status": "none",
+  "review_history": []
 }

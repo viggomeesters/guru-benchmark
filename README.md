@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/guru-benchmark-hero.svg" alt="Guru Benchmark — source-grounded expert judgment, synthesized" width="100%">
+  <img src="assets/social-preview.png" alt="Guru Benchmark — source-grounded expert judgment, synthesized" width="100%">
 </p>
 
 # Guru Benchmark
@@ -50,7 +50,7 @@ The repository foundation is complete. Product behavior is intentionally represe
 - the [implementation plan](docs/implementation-plan.md);
 - public-safety and repository gates.
 
-## Get started
+## Installation
 
 Requirements: Git, Bash, Make, Python 3.11+, and network access on the first Go workflow bootstrap.
 
@@ -64,6 +64,16 @@ make check
 
 See [Getting Started](docs/getting-started.md) for the repository map and contributor workflow.
 
+## Usage
+
+The current foundation validates the public benchmark and design contracts:
+
+```bash
+python3 scripts/validate_contracts.py
+```
+
+Product evaluation commands are intentionally not claimed as implemented. The dependency-ordered implementation tasks are ready under `.go/tasks/open/`.
+
 ## Validate
 
 ```bash
@@ -71,6 +81,16 @@ make check
 ```
 
 The gate runs contract tests, JSON Schema validation, repo-local Go validation, architecture validation, documentation checks, and a tracked-file public-safety audit.
+
+## Development
+
+```bash
+./go status . --json
+./go claim <TASK-ID> --repo . --agent <your-agent>
+make check
+```
+
+Follow [Contributing](CONTRIBUTING.md) and the repo-local rules in [`AGENTS.md`](AGENTS.md). Each task defines bounded paths, acceptance criteria, and verification commands.
 
 ## Start the next task
 

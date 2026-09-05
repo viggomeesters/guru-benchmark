@@ -36,7 +36,7 @@ Published snapshots are immutable. Corrections create successor versions and cha
 
 ## Adding council members
 
-Fame is not sufficient. A candidate needs a documented domain contribution, enough stable public evidence to build a bounded lens, and a clear reason the existing council lacks that perspective. Council changes require a new benchmark version.
+Fame is not sufficient. A prospective member needs a documented domain contribution, enough stable public evidence to build a bounded lens, and a clear reason the existing council lacks that perspective. Council changes require a new benchmark version.
 
 ## Non-affiliation
 

@@ -12,7 +12,7 @@ The canonical SVG was rendered with Google Chrome 148 at 1280 × 640 and inspect
 - Pass: no headline, subtitle, card, node, or footer overlap.
 - Pass: headline and primary labels have strong contrast.
 - Pass: all seven council nodes and the central synthesis are visible and legible.
-- Pass: no malformed glyphs, placeholder copy, white corners, or transparent-edge artifacts.
+- Pass: no malformed glyphs, unfinished copy, white corners, or transparent-edge artifacts.
 - Pass: left content and right council diagram remain visually balanced.
 - Note: footer principles are intentionally secondary but remain readable at full social-preview size.
 

@@ -22,7 +22,7 @@ for relative in required:
             errors.append(f"placeholder token {match.group(0)!r} in {relative}")
 
 readme = (ROOT / "README.md").read_text(encoding="utf-8") if (ROOT / "README.md").is_file() else ""
-for target in ["assets/guru-benchmark-hero.svg", "docs/product-vision.md", "docs/vision.json", "docs/implementation-plan.md", "CONTRIBUTING.md", "SECURITY.md", "LICENSE"]:
+for target in ["assets/social-preview.png", "docs/product-vision.md", "docs/vision.json", "docs/implementation-plan.md", "CONTRIBUTING.md", "SECURITY.md", "LICENSE"]:
     if target not in readme:
         errors.append(f"README does not link {target}")
 

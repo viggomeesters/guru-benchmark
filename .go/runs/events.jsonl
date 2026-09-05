@@ -1,3 +1,4 @@
 {"schema": "go-workflow.repo-local.event.v1", "kind": "event", "event": "task.claimed", "created_at": "2026-09-05T21:30:29+02:00", "task_id": "GB-F001", "agent": "hermes", "data": {"report_only_dirty": []}}
 {"schema": "go-workflow.repo-local.event.v1", "kind": "event", "event": "task.claimed", "created_at": "2026-09-05T21:37:24+02:00", "task_id": "GB-F002", "agent": "hermes", "data": {"report_only_dirty": []}}
 {"schema": "go-workflow.repo-local.event.v1", "kind": "event", "event": "task.claimed", "created_at": "2026-09-05T21:44:06+02:00", "task_id": "GB-F003", "agent": "hermes", "data": {"report_only_dirty": []}}
+{"schema": "go-workflow.repo-local.event.v1", "kind": "event", "event": "task.claimed", "created_at": "2026-09-05T21:46:28+02:00", "task_id": "GB-F004", "agent": "hermes", "data": {"report_only_dirty": []}}
