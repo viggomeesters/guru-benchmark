@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viggomeesters.github.io/guru-benchmark/schemas/repo-vision-contract.schema.json",
+  "title": "Repository Vision Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "artifact_kind", "repo", "vision", "principles", "non_goals", "assumptions", "public_safety", "acceptance_scorecard", "review_checklist", "maturity_model", "residual_risk_wording"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": "1.0.0"},
+    "artifact_kind": {"const": "repo_design_vision_contract"},
+    "repo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "primary_users", "product_surface"],
+      "properties": {
+        "name": {"const": "guru-benchmark"},
+        "primary_users": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "product_surface": {"const": "agent_first"}
+      }
+    },
+    "vision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["one_line", "north_star", "promise", "wedge"],
+      "properties": {
+        "one_line": {"type": "string", "minLength": 20},
+        "north_star": {"type": "string", "minLength": 20},
+        "promise": {"type": "string", "minLength": 20},
+        "wedge": {"type": "string", "minLength": 20}
+      }
+    },
+    "principles": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "rule", "good", "bad"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+          "title": {"type": "string"},
+          "rule": {"type": "string", "minLength": 20},
+          "good": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "bad": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+        }
+      }
+    },
+    "non_goals": {"type": "array", "minItems": 3, "items": {"type": "string"}},
+    "assumptions": {"type": "array", "minItems": 3, "items": {"type": "string"}},
+    "public_safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["forbidden", "required_boundaries"],
+      "properties": {
+        "forbidden": {"type": "array", "minItems": 4, "items": {"type": "string"}},
+        "required_boundaries": {"type": "array", "minItems": 4, "items": {"type": "string"}}
+      }
+    },
+    "acceptance_scorecard": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "question", "pass_condition"],
+        "properties": {
+          "id": {"type": "string"},
+          "question": {"type": "string"},
+          "pass_condition": {"type": "string"}
+        }
+      }
+    },
+    "review_checklist": {"type": "array", "minItems": 5, "items": {"type": "string"}},
+    "maturity_model": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["level", "state", "meaning"],
+        "properties": {
+          "level": {"type": "string"},
+          "state": {"type": "string"},
+          "meaning": {"type": "string"}
+        }
+      }
+    },
+    "residual_risk_wording": {"type": "string", "minLength": 30}
+  }
+}

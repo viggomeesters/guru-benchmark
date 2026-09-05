@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viggomeesters.github.io/guru-benchmark/schemas/guru-benchmark.schema.json",
+  "title": "Guru Benchmark Definition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "benchmark_id", "version", "as_of", "council", "hard_gates", "dimensions", "aggregation", "output_contract"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "benchmark_id": {"type": "string", "pattern": "^guru-[a-z0-9-]+$"},
+    "version": {"type": "string", "pattern": "^[0-9]{4}\\.[0-9]{2}$"},
+    "as_of": {"type": "string", "format": "date"},
+    "council": {"type": "array", "minItems": 7, "uniqueItems": true, "items": {"type": "string"}},
+    "hard_gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "question", "failure_effect"],
+        "properties": {
+          "id": {"type": "string"},
+          "question": {"type": "string"},
+          "failure_effect": {"enum": ["hold", "score_cap", "conditional_go"]}
+        }
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "weight", "question"],
+        "properties": {
+          "id": {"type": "string"},
+          "weight": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+          "question": {"type": "string"}
+        }
+      }
+    },
+    "aggregation": {
+      "type": "object",
+      "required": ["score_method", "weight_basis", "disagreement_policy", "abstention_policy"],
+      "properties": {
+        "score_method": {"const": "weighted_median"},
+        "weight_basis": {"type": "array", "items": {"type": "string"}},
+        "disagreement_policy": {"type": "string"},
+        "abstention_policy": {"type": "string"}
+      }
+    },
+    "output_contract": {
+      "type": "array",
+      "minItems": 5,
+      "items": {"enum": ["guru_verdict", "guru_score", "ultimate_design", "clarification", "guru_contributions", "next_moves", "current_score", "north_star_score"]}
+    }
+  }
+}

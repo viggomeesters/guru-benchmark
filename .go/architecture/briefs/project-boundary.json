@@ -1,0 +1,40 @@
+{
+  "schema": "go-workflow.architecture-brief.v1",
+  "kind": "architecture_brief",
+  "id": "project-boundary",
+  "project": "guru-benchmark",
+  "title": "Public, source-grounded benchmark boundary",
+  "status": "accepted",
+  "owner": "Guru Benchmark maintainers",
+  "outcomes": [
+    "Evaluations remain traceable, reproducible, public-safe, and explicit about uncertainty."
+  ],
+  "scope": {
+    "in": ["Public benchmark contracts", "Public-source metadata", "Synthetic fixtures", "Evaluation and validation tooling"],
+    "out": ["Private user context", "Copied source corpora", "Hosted inference services", "Claims of expert endorsement"],
+    "systems": ["Versioned benchmark definitions", "Versioned expert lens snapshots", "Evaluation engine", "CLI and agent adapters"],
+    "boundaries": ["Public repository boundary", "External public-source boundary", "Local generated-runtime boundary"]
+  },
+  "stakeholders": [
+    {"role": "maintainer", "concerns": ["traceability", "public safety", "reproducibility"], "decision_rights": ["accept benchmark and schema changes"]},
+    {"role": "consumer", "concerns": ["clear verdicts", "honest confidence", "actionable next moves"], "decision_rights": ["supply decision context and reject unsuitable synthesis"]}
+  ],
+  "constraints": [
+    "Canonical workflow state stays in repo-local .go JSON and JSONL.",
+    "Expert claims require public-source provenance or explicit inference/abstention labels.",
+    "Generated evaluations, caches, downloaded pages, and private context remain outside Git by default.",
+    "The project must not imply affiliation with or endorsement by council members."
+  ],
+  "quality_attributes": [
+    {"id": "unsupported-claims", "scenario": "A lens includes an expert position or quotation.", "measure": "Unsupported or unlabeled claims accepted by validation", "threshold": 0},
+    {"id": "historical-replay", "scenario": "A historical evaluation is reopened after benchmark updates.", "measure": "Missing immutable benchmark or lens reference", "threshold": 0},
+    {"id": "public-data-leakage", "scenario": "Repository content is prepared for publication.", "measure": "Tracked secrets, private records, or copied source corpora", "threshold": 0}
+  ],
+  "risks": [
+    "Public evidence may be incomplete, outdated, or ambiguous.",
+    "Weighting can create false precision unless rationale and dispersion remain visible.",
+    "A council synthesis may be mistaken for endorsement without prominent non-affiliation language."
+  ],
+  "open_questions": [],
+  "decision_ids": []
+}

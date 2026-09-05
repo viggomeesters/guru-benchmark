@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_id": "guru-ai-engineer",
+  "version": "2026.09",
+  "as_of": "2026-09-05",
+  "council": [
+    "andrew-karpathy",
+    "matt-pocock",
+    "peter-steinberger",
+    "rich-hickey",
+    "dhh",
+    "simon-willison",
+    "mitchell-hashimoto"
+  ],
+  "hard_gates": [
+    {"id": "correctness", "question": "Does the system produce correct and testable results?", "failure_effect": "hold"},
+    {"id": "evidence", "question": "Are consequential claims backed by inspectable evidence?", "failure_effect": "score_cap"},
+    {"id": "security-privacy", "question": "Are security and privacy boundaries explicit and enforced?", "failure_effect": "hold"},
+    {"id": "recoverability", "question": "Can critical state and decisions be reconstructed or recovered?", "failure_effect": "conditional_go"},
+    {"id": "context-fit", "question": "Does the design fit the actual user, scale, and operating environment?", "failure_effect": "score_cap"}
+  ],
+  "dimensions": [
+    {"id": "correctness", "weight": 0.15, "question": "Are behavior and invariants correct?"},
+    {"id": "conceptual-integrity", "weight": 0.12, "question": "Is the system simple to explain and hard to misuse?"},
+    {"id": "user-leverage", "weight": 0.12, "question": "Does it materially increase useful output per unit of attention?"},
+    {"id": "bounded-agency", "weight": 0.10, "question": "Can agents act autonomously within explicit limits?"},
+    {"id": "observability", "weight": 0.10, "question": "Can users inspect decisions, state, failures, and progress?"},
+    {"id": "maintainability", "weight": 0.10, "question": "Can the system evolve without hidden coupling?"},
+    {"id": "data-ownership", "weight": 0.08, "question": "Are canonical data and outputs portable and controlled?"},
+    {"id": "security-privacy", "weight": 0.08, "question": "Are trust boundaries and sensitive data protected?"},
+    {"id": "performance-cost", "weight": 0.06, "question": "Are latency, resource use, and cost proportionate?"},
+    {"id": "reversibility", "weight": 0.05, "question": "Can changes and failures be safely reversed?"},
+    {"id": "interaction-design", "weight": 0.04, "question": "Is the product surface calm, legible, and actionable?"}
+  ],
+  "aggregation": {
+    "score_method": "weighted_median",
+    "weight_basis": ["domain relevance", "source confidence", "recency", "context fit", "counterweight value"],
+    "disagreement_policy": "Emit clarification when dispersion or conflicting recommendations could change the decision.",
+    "abstention_policy": "A council member remains listed but contributes no fabricated position when evidence or relevance is insufficient."
+  },
+  "output_contract": ["guru_verdict", "guru_score", "current_score", "north_star_score", "ultimate_design", "clarification", "guru_contributions", "next_moves"]
+}
