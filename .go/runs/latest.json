@@ -1,10 +1,10 @@
 {
   "schema": "go-workflow.latest-run.v1",
-  "updated_at": "2026-09-06T20:45:17+02:00",
+  "updated_at": "2026-09-06T21:01:56+02:00",
   "mode": "go-loop",
   "status": "budget_exhausted",
   "completed_tasks": [
-    "GB-102"
+    "GB-103"
   ],
   "blocked_task": null,
   "budget_exhausted": true,
