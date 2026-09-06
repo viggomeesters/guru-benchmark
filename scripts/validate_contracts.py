@@ -6,6 +6,8 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator, FormatChecker
 
+from evaluation_contract import validate_contract
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -34,4 +36,14 @@ if abs(weight - 1.0) > 1e-9:
     raise SystemExit(f"Dimension weights must total 1.0, got {weight}")
 if len(set(benchmark["council"])) != 7:
     raise SystemExit("Founding council must contain exactly seven unique members")
+
+evaluation_errors = validate_contract(
+    load("tests/fixtures/evaluation/valid/synthetic-library-evaluation.json"),
+    load("tests/fixtures/benchmark/synthetic-evaluation-contract.json"),
+    load("tests/fixtures/context/valid/synthetic-library-context.json"),
+    [load("lenses/fixtures/valid/synthetic-systems-builder.json")],
+)
+if evaluation_errors:
+    formatted = "\n".join(f"- {error}" for error in evaluation_errors)
+    raise SystemExit(f"Evaluation contract validation failed:\n{formatted}")
 print("contracts: valid")

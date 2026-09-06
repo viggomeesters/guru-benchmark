@@ -1,0 +1,7 @@
+Status: blocked.
+
+- `validate_contract()` only checks synthetic consistency when `evaluation.synthetic` is true. Marking the valid synthetic fixture false while retaining its synthetic context and expert lens returns no errors, allowing synthetic evidence to masquerade as real.
+- The evaluation schema forbids undeclared fields but provides no `non_actions` field, although the canonical vision and benchmark model require every complete evaluation to expose explicit non-actions.
+- Focused verification passes 30 tests, and the builder recorded a successful 51-test `make check`; neither blocker is covered.
+
+{"schema":"go-workflow.agent-adapter-result.v1","phase":"critic","status":"blocked","summary":"GB-102 remains blocked: validation accepts a non-synthetic evaluation backed by synthetic context and lenses, and the closed evaluation schema cannot represent the vision-required explicit non-actions; 30 focused tests pass but do not cover these contract gaps."}

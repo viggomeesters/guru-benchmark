@@ -1,0 +1,8 @@
+Status: blocked.
+
+Blocking finding:
+
+- The evaluation contract cannot record why a council weight was assigned, despite the architecture requiring recorded weighting rationale. [`evaluation.schema.json`](/Users/viggomeesters/Documents/Codex/2026-09-06/clone-x20/guru-benchmark/schemas/evaluation.schema.json) accepts an unexplained, unnormalized weight of `0.2`, while rejecting a `weight_rationale` field. This prevents transparent, context-based weighting and leaves GB-103 without a schema-supported rationale field.
+- All 32 focused tests pass. The full suite reached 49 passing tests; four unrelated installer tests were prevented from creating temporary directories by the read-only sandbox. Prior repository evidence records a successful 51-test `make check`.
+
+{"schema":"go-workflow.agent-adapter-result.v1","phase":"critic","status":"blocked","summary":"GB-102 remains blocked: the closed evaluation schema records numeric council weights but cannot record the context/evidence rationale required by the weighted-consensus architecture; an arbitrary unexplained weight validates while weight_rationale is rejected. All 32 focused tests pass."}

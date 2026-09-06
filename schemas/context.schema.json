@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viggomeesters.github.io/guru-benchmark/schemas/context.schema.json",
+  "title": "Guru Benchmark Decision Context",
+  "description": "An immutable, versioned context profile used to evaluate one bounded technical decision.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "context_id",
+    "version",
+    "as_of",
+    "synthetic",
+    "subject",
+    "decision",
+    "operating_environment",
+    "dominant_risks",
+    "constraints",
+    "assumptions",
+    "unknowns",
+    "privacy"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "context_id": {"type": "string", "pattern": "^context\\.[a-z0-9][a-z0-9-]+$"},
+    "version": {"type": "string", "pattern": "^[0-9]{4}\\.[0-9]{2}\\.[0-9]+$"},
+    "as_of": {"type": "string", "format": "date"},
+    "synthetic": {"type": "boolean"},
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "name", "description"],
+      "properties": {
+        "kind": {"enum": ["system", "proposal", "repository", "architecture", "decision"]},
+        "name": {"type": "string", "minLength": 2, "maxLength": 120},
+        "description": {"type": "string", "minLength": 8, "maxLength": 1000}
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "question", "horizon"],
+      "properties": {
+        "mode": {"enum": ["critique", "design", "delta", "devil"]},
+        "question": {"type": "string", "minLength": 8, "maxLength": 500},
+        "horizon": {"type": "string", "minLength": 3, "maxLength": 120}
+      }
+    },
+    "operating_environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["product_stage", "scale", "lifecycle", "audience"],
+      "properties": {
+        "product_stage": {"enum": ["idea", "prototype", "pilot", "production", "legacy"]},
+        "scale": {"type": "string", "minLength": 2, "maxLength": 200},
+        "lifecycle": {"type": "string", "minLength": 2, "maxLength": 200},
+        "audience": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 2, "maxLength": 100}}
+      }
+    },
+    "dominant_risks": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"enum": ["correctness", "security", "privacy", "reliability", "recoverability", "maintainability", "adoption", "cost", "provenance"]}
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "category", "statement", "priority"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^constraint\\.[a-z0-9][a-z0-9-]+$"},
+          "category": {"enum": ["technical", "operational", "organizational", "time", "cost", "privacy", "compliance"]},
+          "statement": {"type": "string", "minLength": 5, "maxLength": 500},
+          "priority": {"enum": ["hard", "soft"]}
+        }
+      }
+    },
+    "assumptions": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 5, "maxLength": 500}},
+    "unknowns": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 5, "maxLength": 500}},
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["classification", "publishable"],
+      "properties": {
+        "classification": {"enum": ["public", "internal", "confidential"]},
+        "publishable": {"type": "boolean"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"privacy": {"properties": {"classification": {"const": "public"}}}},
+        "required": ["privacy"]
+      },
+      "then": {"properties": {"privacy": {"properties": {"publishable": {"const": true}}}}}
+    },
+    {
+      "if": {
+        "properties": {"privacy": {"properties": {"classification": {"enum": ["internal", "confidential"]}}}},
+        "required": ["privacy"]
+      },
+      "then": {"properties": {"privacy": {"properties": {"publishable": {"const": false}}}}}
+    }
+  ]
+}

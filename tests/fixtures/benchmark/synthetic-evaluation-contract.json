@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_id": "guru-synthetic-evaluation-contract",
+  "version": "2026.09",
+  "as_of": "2026-09-05",
+  "council": [
+    "synthetic-systems-builder",
+    "synthetic-abstainer-one",
+    "synthetic-abstainer-two",
+    "synthetic-abstainer-three",
+    "synthetic-abstainer-four",
+    "synthetic-abstainer-five",
+    "synthetic-abstainer-six"
+  ],
+  "hard_gates": [
+    {
+      "id": "correctness",
+      "question": "Does the synthetic contract preserve replay correctness?",
+      "failure_effect": "hold"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "reproducibility",
+      "weight": 1.0,
+      "question": "Can the synthetic result be replayed from exact pins?"
+    }
+  ],
+  "aggregation": {
+    "score_method": "weighted_median",
+    "weight_basis": ["domain_relevance", "evidence_confidence"],
+    "disagreement_policy": "Clarify material disagreement.",
+    "abstention_policy": "Do not score an abstaining lens."
+  },
+  "output_contract": [
+    "guru_verdict",
+    "guru_score",
+    "ultimate_design",
+    "clarification",
+    "guru_contributions",
+    "next_moves",
+    "current_score",
+    "north_star_score"
+  ]
+}

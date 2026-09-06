@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "context_id": "context.synthetic-library",
+  "version": "2026.09.1",
+  "as_of": "2026-09-06",
+  "synthetic": true,
+  "subject": {
+    "kind": "architecture",
+    "name": "Synthetic Library Service",
+    "description": "A fictional local service used only to exercise public benchmark contracts."
+  },
+  "decision": {
+    "mode": "delta",
+    "question": "Should the fictional service move from mutable aliases to immutable release pins?",
+    "horizon": "next release"
+  },
+  "operating_environment": {
+    "product_stage": "pilot",
+    "scale": "ten synthetic requests per minute",
+    "lifecycle": "maintained by a fictional two-person team",
+    "audience": ["synthetic maintainers"]
+  },
+  "dominant_risks": ["correctness", "provenance"],
+  "constraints": [
+    {
+      "id": "constraint.offline",
+      "category": "technical",
+      "statement": "Validation must run without network access.",
+      "priority": "hard"
+    }
+  ],
+  "assumptions": ["Synthetic release manifests remain available locally."],
+  "unknowns": ["Migration duration has not been measured."],
+  "privacy": {
+    "classification": "public",
+    "publishable": true
+  }
+}
