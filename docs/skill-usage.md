@@ -96,4 +96,18 @@ python3 -m unittest tests.test_skill_install -v
 make check
 ```
 
-Runtime dogfood evidence and known limitations are recorded in the final section of this document once `GB-112` has executed.
+## Runtime verification snapshot
+
+Verified on **September 6, 2026** with a public-safe synthetic `North Star devil` prompt:
+
+- **Hermes Agent 0.19.1:** installed into an isolated `HERMES_HOME`; `hermes skills list` reported `guru-benchmark` as a local enabled skill. A real model invocation read the portable bundle and passed assertions for every required heading, `guru-ai-engineer@2026.09`, all seven individual council rows, abstention behavior, and absence of persona phrases.
+- **Codex CLI 0.153.4:** `codex debug prompt-input` discovered the committed project skill from `.agents/skills/guru-benchmark/SKILL.md` and exposed it as `$guru-benchmark`. The isolated model invocation reached OpenAI but returned `401 Unauthorized` because the local Codex CLI reported `Not logged in`; discovery is proven, while model-output parity requires `codex login` on this machine.
+- **Install isolation:** Hermes and Codex destinations, dry-run behavior, overwrite refusal, complete bundle copying, and backup-on-force behavior pass deterministic temporary-directory tests.
+
+Reproduce the deterministic portion with:
+
+```bash
+python3 scripts/validate_skill.py
+python3 -m unittest tests.test_skill_install -v
+make check
+```

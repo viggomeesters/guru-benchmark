@@ -144,6 +144,8 @@ Return the following headings in this order:
 
 Structured consumers may request JSON matching `references/response.schema.json`. Human-readable output must remain equivalent to that schema.
 
+When the pinned benchmark lists seven council members, emit exactly seven individual contribution rows in benchmark order. Never collapse them into `all members`, `the council`, or another aggregate row. If the benchmark bundle cannot be read, do not guess its identifier, version, member list, or lens availability: return `hold`, mark those pins unavailable, and name contract access as the unblocker.
+
 ## Failure and Abstention Rules
 
 Return `hold` rather than bluff when:
