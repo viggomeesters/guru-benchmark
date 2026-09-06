@@ -1,0 +1,15 @@
+{
+  "synthetic": true,
+  "description": "At an exact 50 percent boundary, use the midpoint between the adjacent distinct scores.",
+  "scores": {
+    "expert.synthetic-lower": 4,
+    "expert.synthetic-upper": 8
+  },
+  "weights": {
+    "expert.synthetic-lower": 1,
+    "expert.synthetic-upper": 1,
+    "expert.synthetic-abstaining": 100
+  },
+  "abstentions": ["expert.synthetic-abstaining"],
+  "expected": "6"
+}
