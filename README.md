@@ -6,7 +6,7 @@
 
 [![Validate](https://img.shields.io/badge/local%20gate-make%20check-18d38b)](#validate)
 [![License: MIT](https://img.shields.io/badge/license-MIT-f0c35a)](LICENSE)
-[![Status: Foundation](https://img.shields.io/badge/status-foundation-8b93ff)](CHANGELOG.md)
+[![Status: Portable Skill](https://img.shields.io/badge/status-portable%20skill-8b93ff)](docs/skill-usage.md)
 
 **A living, source-grounded expert council for repeatable technical judgment.**
 
@@ -40,7 +40,7 @@ A question such as _“How would these experts design this?”_ usually produces
 
 ## Repository status
 
-The repository foundation is complete. Product behavior is intentionally represented as a dependency-ordered Go backlog rather than pretend implementation. The current artifacts define and validate:
+The repository foundation and portable agent-skill interface are complete. The deterministic evaluation engine remains a dependency-ordered Go backlog rather than pretend implementation. The current artifacts define and validate:
 
 - the [product vision](docs/product-vision.md);
 - the machine-readable [design contract](docs/vision.json);
@@ -48,6 +48,7 @@ The repository foundation is complete. Product behavior is intentionally represe
 - the [benchmark model](docs/benchmark-model.md);
 - the initial [`guru-ai-engineer@2026.09`](benchmarks/guru-ai-engineer/2026.09.json) contract;
 - the [implementation plan](docs/implementation-plan.md);
+- the portable [`guru-benchmark` agent skill](skills/guru-benchmark/SKILL.md) and [runtime usage guide](docs/skill-usage.md);
 - public-safety and repository gates.
 
 ## Installation
@@ -66,13 +67,15 @@ See [Getting Started](docs/getting-started.md) for the repository map and contri
 
 ## Usage
 
-The current foundation validates the public benchmark and design contracts:
+Validate the public contracts and invoke the portable skill from Hermes, Codex, or another Agent Skills client:
 
 ```bash
 python3 scripts/validate_contracts.py
+./scripts/install-skill.sh --target hermes --dry-run
+./scripts/install-skill.sh --target codex --dry-run
 ```
 
-Product evaluation commands are intentionally not claimed as implemented. The dependency-ordered implementation tasks are ready under `.go/tasks/open/`.
+Canonical skill entrypoints are `Guru Benchmark`, `North Star critique`, `North Star design`, `North Star delta`, and `North Star devil`. See [Skill Usage](docs/skill-usage.md). The skill currently supplies the evidence and synthesis procedure; the deterministic non-LLM evaluation engine remains in the Go backlog.
 
 ## Validate
 

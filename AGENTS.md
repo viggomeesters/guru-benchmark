@@ -23,6 +23,13 @@ This repository uses a repo-local Go workflow. Repository files are the source o
 - Pin immutable benchmark and lens versions in evaluations.
 - Public fixtures must be synthetic and contain no private context.
 
+## Portable skill
+
+- `skills/guru-benchmark/SKILL.md` is the canonical behavior contract.
+- `.agents/skills/guru-benchmark/SKILL.md` is discovery-only and must remain a thin bridge.
+- Regenerate bundled contracts with `python3 scripts/sync_skill_contracts.py` after changing a benchmark or schema.
+- Never maintain separate Hermes and Codex methodology forks.
+
 ## Verification
 
 Run `make check` before finishing. For architecture-sensitive work, record the required decision, classification, conformance, and review evidence through `./go architecture` commands.

@@ -1,0 +1,97 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-111",
+  "project": "guru-benchmark",
+  "status": "done",
+  "summary": "Add Hermes and Codex discovery and installation adapters",
+  "description": "Depends on GB-110. Add a repo-local Codex discovery bridge, Hermes tap/direct-install documentation, portable install helper with safe copy semantics, and readback tests without changing user-global configuration by default.",
+  "scope": {
+    "read": [
+      "skills/**",
+      "docs/**"
+    ],
+    "modify": [
+      ".agents/skills/guru-benchmark/**",
+      "scripts/install-skill.sh",
+      "docs/skill-usage.md",
+      "README.md",
+      "AGENTS.md",
+      "tests/**",
+      "Makefile"
+    ]
+  },
+  "acceptance": [
+    "Codex can discover the repo-local bridge; Hermes can install from the public repository or a local checkout; install paths are documented; dry-run and isolated HOME installs prove no unrelated files are changed."
+  ],
+  "verification": [
+    "python3 -m unittest tests.test_skill_install -v && make check"
+  ],
+  "claim": {
+    "agent": "hermes",
+    "claimed_at": "2026-09-06T09:14:24+02:00"
+  },
+  "work_status": "completed",
+  "review_status": "review",
+  "review_history": [],
+  "evidence": [
+    {
+      "schema": "go-workflow.finish-evidence.v1",
+      "created_at": "2026-09-06T09:18:00+02:00",
+      "task_id": "GB-111",
+      "agent": "hermes",
+      "summary": "changed_files=.agents/skills/guru-benchmark/SKILL.md,scripts/install-skill.sh,docs/skill-usage.md,README.md,AGENTS.md,tests/test_skill_install.py,Makefile; verification=bash -n scripts/install-skill.sh && python3 -m unittest tests.test_skill_install -v && make check; result=passed 21 tests; critic=installer false failure reproduced with shell trace and fixed, existing installs require explicit force and retain backup; runtime=hermes",
+      "changed_files": [
+        ".agents/skills/guru-benchmark/SKILL.md",
+        "scripts/install-skill.sh",
+        "docs/skill-usage.md",
+        "README.md",
+        "AGENTS.md",
+        "tests/test_skill_install.py",
+        "Makefile"
+      ],
+      "no_diff": false,
+      "verification": {
+        "command": "bash -n scripts/install-skill.sh && python3 -m unittest tests.test_skill_install -v && make check",
+        "result": "passed 21 tests"
+      },
+      "runtime": {
+        "agent": "hermes",
+        "runtime": "hermes",
+        "model": null,
+        "billing_mode": "unknown"
+      },
+      "usage": {
+        "schema": "go-workflow.usage-attribution.v1",
+        "runtime_kind": "hermes",
+        "billing_mode": "unknown",
+        "owner": "hermes",
+        "model": null,
+        "token_estimate": null,
+        "api_equivalent_cost_usd": null,
+        "provider_invoice_cost_usd": null,
+        "cost_label": "api_equivalent_not_invoice_cost"
+      },
+      "review": {
+        "outcome": "installer false failure reproduced with shell trace and fixed, existing installs require explicit force and retain backup",
+        "skip_reason": null
+      }
+    }
+  ],
+  "architecture": {
+    "impact": "material",
+    "scope_refs": [
+      "project-boundary"
+    ],
+    "concerns": [
+      "Hermes and Codex discovery and installation adapters must preserve canonical skill behavior without modifying global state by default."
+    ],
+    "decision_ids": [
+      "GB-ADR-002"
+    ],
+    "conformance_required": true,
+    "human_gate": "none"
+  }
+}

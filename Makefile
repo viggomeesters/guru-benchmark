@@ -1,12 +1,15 @@
 PYTHON ?= python3
 
-.PHONY: check contracts workflow docs privacy
+.PHONY: check contracts skill workflow docs privacy
 
-check: contracts workflow docs privacy
+check: contracts skill workflow docs privacy
 
 contracts:
 	$(PYTHON) -m unittest discover -s tests -p 'test_*.py' -v
 	$(PYTHON) scripts/validate_contracts.py
+
+skill:
+	$(PYTHON) scripts/validate_skill.py
 
 workflow:
 	bash scripts/validate-go.sh
