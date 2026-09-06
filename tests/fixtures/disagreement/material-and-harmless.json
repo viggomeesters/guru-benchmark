@@ -1,0 +1,30 @@
+{
+  "synthetic": true,
+  "policy": {
+    "dispersion_threshold": 2,
+    "recommendation_weight_threshold": 0.2
+  },
+  "incompatible_actions": [["hold", "ship"]],
+  "cases": [
+    {
+      "id": "material-dispersion-and-conflict",
+      "scores": {"lens.hold": 4, "lens.ship": 8},
+      "weights": {"lens.hold": 1, "lens.ship": 1},
+      "recommendations": {"lens.hold": "hold", "lens.ship": "ship"},
+      "abstentions": [],
+      "expected_required": true,
+      "expected_dispersion": 4,
+      "expected_reasons": ["score_dispersion", "incompatible_recommendations"]
+    },
+    {
+      "id": "harmless-active-variation",
+      "scores": {"lens.primary": 7, "lens.supporting": 5, "lens.abstain": 0},
+      "weights": {"lens.primary": 7, "lens.supporting": 1, "lens.abstain": 2},
+      "recommendations": {"lens.primary": "ship", "lens.supporting": "hold", "lens.abstain": "hold"},
+      "abstentions": ["lens.abstain"],
+      "expected_required": false,
+      "expected_dispersion": 2,
+      "expected_reasons": []
+    }
+  ]
+}
