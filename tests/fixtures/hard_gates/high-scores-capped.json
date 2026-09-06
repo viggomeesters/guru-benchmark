@@ -1,0 +1,15 @@
+{
+  "synthetic": true,
+  "description": "A failed evidence gate caps an otherwise perfect aggregate score.",
+  "hard_gates": [
+    {
+      "gate_id": "evidence",
+      "status": "fail",
+      "effect": "score_cap"
+    }
+  ],
+  "aggregate_score": 10,
+  "score_cap": 5,
+  "expected_decision": "conditional_go",
+  "expected_score": 5
+}

@@ -1,0 +1,38 @@
+$ python3 -m unittest tests.test_hard_gates -v && make check
+returncode: 0
+stdout:
+python3 -m unittest discover -s tests -p 'test_*.py' -v
+python3 scripts/validate_contracts.py
+contracts: valid
+python3 scripts/validate_skill.py
+skill contract: valid
+bash scripts/validate-go.sh
+ok: /Users/viggomeesters/Documents/Codex/2026-09-06/clone-x20/guru-benchmark/.go
+ok: /Users/viggomeesters/Documents/Codex/2026-09-06/clone-x20/guru-benchmark/.go/architecture
+workflow: valid
+python3 scripts/validate_docs.py
+docs: valid (15 required artifacts)
+python3 scripts/public_safety_audit.py
+public safety: valid (134 tracked paths)
+
+stderr:
+.ExpertLensContractTests.test_internet_stereotype_is_rejected) ... ok
+test_short_excerpt_requires_direct_source (test_lens_contract.ExpertLensContractTests.test_short_excerpt_requires_direct_source) ... ok
+test_source_refs_resolve_and_dates_are_ordered (test_lens_contract.ExpertLensContractTests.test_source_refs_resolve_and_dates_are_ordered) ... ok
+test_valid_synthetic_lens_passes (test_lens_contract.ExpertLensContractTests.test_valid_synthetic_lens_passes) ... ok
+test_example_keeps_every_council_member_visible (test_skill_contract.GuruBenchmarkSkillContractTests.test_example_keeps_every_council_member_visible) ... ok
+test_request_and_response_examples_validate (test_skill_contract.GuruBenchmarkSkillContractTests.test_request_and_response_examples_validate) ... ok
+test_response_contract_keeps_current_and_north_star_separate (test_skill_contract.GuruBenchmarkSkillContractTests.test_response_contract_keeps_current_and_north_star_separate) ... ok
+test_skill_names_all_four_modes_and_output_sections (test_skill_contract.GuruBenchmarkSkillContractTests.test_skill_names_all_four_modes_and_output_sections) ... ok
+test_skill_validator_passes (test_skill_contract.GuruBenchmarkSkillContractTests.test_skill_validator_passes) ... ok
+test_codex_bridge_delegates_to_canonical_skill (test_skill_install.SkillInstallTests.test_codex_bridge_delegates_to_canonical_skill) ... ok
+test_codex_default_uses_agents_home (test_skill_install.SkillInstallTests.test_codex_default_uses_agents_home) ... ok
+test_dry_run_changes_nothing (test_skill_install.SkillInstallTests.test_dry_run_changes_nothing) ... ok
+test_existing_install_requires_force_and_force_keeps_backup (test_skill_install.SkillInstallTests.test_existing_install_requires_force_and_force_keeps_backup) ... ok
+test_hermes_install_copies_complete_bundle (test_skill_install.SkillInstallTests.test_hermes_install_copies_complete_bundle) ... ok
+
+----------------------------------------------------------------------
+Ran 69 tests in 0.283s
+
+OK
+
