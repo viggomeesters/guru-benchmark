@@ -33,5 +33,19 @@
   "work_status": "pending",
   "review_status": "none",
   "review_history": [],
-  "evidence": []
+  "evidence": [],
+  "architecture": {
+    "impact": "material",
+    "scope_refs": [
+      "project-boundary"
+    ],
+    "concerns": [
+      "Runtime dogfood must prove discovery and invocation without leaking credentials or mutating the user active skill stores."
+    ],
+    "decision_ids": [
+      "GB-ADR-002"
+    ],
+    "conformance_required": true,
+    "human_gate": "none"
+  }
 }
