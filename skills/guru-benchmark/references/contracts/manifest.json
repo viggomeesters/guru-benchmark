@@ -1,0 +1,26 @@
+{
+  "schema": "guru-benchmark.portable-contract-bundle.v1",
+  "generated_from": "repository canonical contracts",
+  "artifacts": [
+    {
+      "source": "benchmarks/guru-ai-engineer/2026.09.json",
+      "bundled": "references/contracts/2026.09.json",
+      "sha256": "60b01d59d1f361c703827fc656d41df806c72829e8b0013b4a5c48a64b27df61"
+    },
+    {
+      "source": "schemas/guru-benchmark.schema.json",
+      "bundled": "references/contracts/guru-benchmark.schema.json",
+      "sha256": "c2c63f676e58643dbc80d857ceb9c75cd240447e77a6f6838c119b23f414d206"
+    },
+    {
+      "source": "schemas/expert-lens.schema.json",
+      "bundled": "references/contracts/expert-lens.schema.json",
+      "sha256": "ccfa53d6b10657d3f4a2dce0c83330c2ac3e8f35661f6a509d861baca4e5471d"
+    },
+    {
+      "source": "schemas/source-reference.schema.json",
+      "bundled": "references/contracts/source-reference.schema.json",
+      "sha256": "c1faa8ac3fc397e7cdbcfb3a430590d07adad1434a59846d75f4f9efba26d6d9"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "guru_verdict": {
+    "decision": "reject",
+    "summary": "Arithmetic averaging can hide a critical safety failure and must not authorize deployment."
+  },
+  "guru_score": {
+    "current": 2.0,
+    "north_star": 8.5,
+    "confidence": "medium",
+    "dispersion": 3.0,
+    "hard_gate_status": "failed"
+  },
+  "ultimate_design": "Apply hard gates before contextual weighting, require explicit deployment authority, and preserve disagreement and abstention.",
+  "clarification": {
+    "material_disagreement": ["Weighting can differ by context, but safety gates cannot be averaged."],
+    "assumptions": ["The proposal has no independent production approval gate."],
+    "abstentions": ["All named-member contributions abstain until validated expert lenses exist."]
+  },
+  "guru_contributions": [
+    {
+      "member": "andrew-karpathy",
+      "role": "abstain",
+      "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
+      "confidence": "high",
+      "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
+    },
+    {
+      "member": "matt-pocock",
+      "role": "abstain",
+      "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
+      "confidence": "high",
+      "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
+    },
+    {
+      "member": "peter-steinberger",
+      "role": "abstain",
+      "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
+      "confidence": "high",
+      "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
+    },
+    {
+      "member": "rich-hickey",
+      "role": "abstain",
+      "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
+      "confidence": "high",
+      "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
+    },
+    {
+      "member": "dhh",
+      "role": "abstain",
+      "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
+      "confidence": "high",
+      "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
+    },
+    {
+      "member": "simon-willison",
+      "role": "abstain",
+      "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
+      "confidence": "high",
+      "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
+    },
+    {
+      "member": "mitchell-hashimoto",
+      "role": "abstain",
+      "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
+      "confidence": "high",
+      "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
+    }
+  ],
+  "next_moves": [
+    {"order": 1, "action": "Define non-averagable hard gates.", "evidence": "A failing synthetic safety fixture returns reject or hold."},
+    {"order": 2, "action": "Separate scoring from deployment authority.", "evidence": "No score alone can trigger a production action."}
+  ],
+  "pins": {
+    "benchmark_id": "guru-ai-engineer",
+    "benchmark_version": "2026.09",
+    "benchmark_as_of": "2026-09-05",
+    "lens_versions": {},
+    "evaluated_at": "2026-09-06T09:00:00+02:00"
+  },
+  "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"],
+  "uncertainty": ["No validated real-expert lens is bundled yet."]
+}

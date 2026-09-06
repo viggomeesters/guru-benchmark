@@ -1,0 +1,13 @@
+{
+  "mode": "devil",
+  "subject": "Synthetic council aggregation proposal",
+  "context": "Average seven scores and deploy automatically when the arithmetic mean is at least 8.0.",
+  "benchmark": {"id": "guru-ai-engineer", "version": "2026.09"},
+  "product_stage": "idea",
+  "dominant_risks": ["unsafe automation", "hard failures hidden by averaging"],
+  "constraints": ["public-safe synthetic example"],
+  "non_goals": ["production deployment"],
+  "desired_depth": "compact",
+  "allow_current_research": false,
+  "public_output": true
+}

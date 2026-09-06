@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viggomeesters.github.io/guru-benchmark/skills/guru-benchmark/request.schema.json",
+  "title": "Guru Benchmark Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["mode", "subject", "context", "benchmark"],
+  "properties": {
+    "mode": {"enum": ["critique", "design", "delta", "devil"]},
+    "subject": {"type": "string", "minLength": 3, "maxLength": 500},
+    "context": {"type": "string", "minLength": 8, "maxLength": 20000},
+    "benchmark": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^guru-[a-z0-9-]+$"},
+        "version": {"type": "string", "pattern": "^[0-9]{4}\\.[0-9]{2}$"}
+      }
+    },
+    "artifact_paths": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "public_urls": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+    "product_stage": {"enum": ["idea", "prototype", "production", "migration", "legacy", "unknown"]},
+    "dominant_risks": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 2}},
+    "constraints": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 2}},
+    "non_goals": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 2}},
+    "decision_horizon": {"type": ["string", "null"], "maxLength": 200},
+    "desired_depth": {"enum": ["compact", "standard", "deep"]},
+    "allow_current_research": {"type": "boolean", "default": false},
+    "public_output": {"type": "boolean", "default": false}
+  }
+}
