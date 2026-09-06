@@ -41,7 +41,10 @@
       "title": "CLI and agent integration",
       "features": [],
       "tasks": [
-        "GB-108"
+        "GB-108",
+        "GB-110",
+        "GB-111",
+        "GB-112"
       ]
     },
     {

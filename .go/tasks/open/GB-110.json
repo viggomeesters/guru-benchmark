@@ -1,0 +1,37 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-110",
+  "project": "guru-benchmark",
+  "status": "open",
+  "summary": "Author the portable Guru Benchmark agent skill bundle",
+  "description": "Depends on GB-101. Create a concise agentskills-compatible canonical skill under skills/guru-benchmark with progressive-disclosure references, test prompts, exact output contract, public-safety rules, and benchmark/schema integration.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**",
+      "benchmarks/**"
+    ],
+    "modify": [
+      "skills/guru-benchmark/**",
+      "tests/**",
+      "scripts/**"
+    ]
+  },
+  "acceptance": [
+    "The canonical skill has valid frontmatter, no placeholders, bounded references, four trigger/eval prompts, a deterministic output contract, explicit evidence/inference/abstention rules, and references exact repository contracts."
+  ],
+  "verification": [
+    "python3 scripts/validate_skill.py && python3 -m unittest tests.test_skill_contract -v && make check"
+  ],
+  "claim": {
+    "agent": null,
+    "claimed_at": null
+  },
+  "work_status": "pending",
+  "review_status": "none",
+  "review_history": [],
+  "evidence": []
+}
