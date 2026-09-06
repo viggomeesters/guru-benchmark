@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viggomeesters.github.io/guru-benchmark/schemas/expert-lens.schema.json",
+  "title": "Guru Benchmark Expert Lens",
+  "description": "An immutable, dated and source-grounded model of an expert's demonstrated principles without persona simulation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "lens_id",
+    "version",
+    "expert",
+    "as_of",
+    "valid_until",
+    "status",
+    "confidence",
+    "domains",
+    "source_references",
+    "principles",
+    "signature_moves",
+    "likely_objections",
+    "anti_patterns",
+    "context_dependencies",
+    "abstention_boundaries",
+    "open_questions"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "lens_id": {"type": "string", "pattern": "^expert\\.[a-z0-9][a-z0-9-]+$"},
+    "version": {"type": "string", "pattern": "^[0-9]{4}\\.[0-9]{2}\\.[0-9]+$"},
+    "expert": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "display_name", "aliases", "synthetic"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+        "display_name": {"type": "string", "minLength": 2, "maxLength": 120},
+        "aliases": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "synthetic": {"type": "boolean"}
+      }
+    },
+    "as_of": {"type": "string", "format": "date"},
+    "valid_until": {"type": "string", "format": "date"},
+    "status": {"enum": ["draft", "active", "superseded", "retired"]},
+    "confidence": {"enum": ["low", "medium", "high"]},
+    "domains": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"}
+    },
+    "participation_defaults": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["primary", "supporting", "counterweight", "abstain"]}
+    },
+    "source_references": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "source-reference.schema.json"}
+    },
+    "principles": {"$ref": "#/$defs/claims"},
+    "signature_moves": {"$ref": "#/$defs/claims"},
+    "likely_objections": {"$ref": "#/$defs/claims"},
+    "anti_patterns": {"$ref": "#/$defs/claims"},
+    "context_dependencies": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 5, "maxLength": 300}
+    },
+    "abstention_boundaries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["domain", "reason"],
+        "properties": {
+          "domain": {"type": "string", "minLength": 2, "maxLength": 100},
+          "reason": {"type": "string", "minLength": 8, "maxLength": 300}
+        }
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 5, "maxLength": 300}
+    }
+  },
+  "$defs": {
+    "claims": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/claim"}
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "statement", "evidence_class", "confidence", "source_refs", "context_dependencies"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+        "statement": {"type": "string", "minLength": 8, "maxLength": 500},
+        "evidence_class": {"enum": ["direct_source", "built_pattern", "labeled_inference"]},
+        "confidence": {"enum": ["low", "medium", "high"]},
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^source\\.[a-z0-9][a-z0-9.-]+$"}
+        },
+        "evidence_note": {"type": "string", "minLength": 5, "maxLength": 500},
+        "short_excerpt": {"type": "string", "minLength": 1, "maxLength": 240},
+        "inference_basis": {"type": "string", "minLength": 12, "maxLength": 500},
+        "context_dependencies": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 3, "maxLength": 200}
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"evidence_class": {"const": "labeled_inference"}}, "required": ["evidence_class"]},
+          "then": {"required": ["inference_basis"]}
+        },
+        {
+          "if": {"required": ["short_excerpt"]},
+          "then": {"properties": {"evidence_class": {"const": "direct_source"}}}
+        }
+      ]
+    }
+  }
+}

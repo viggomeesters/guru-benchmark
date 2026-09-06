@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "lens_id": "expert.synthetic-inference",
+  "version": "2026.09.0",
+  "expert": {"id": "synthetic-inference", "display_name": "Synthetic Inference", "aliases": [], "synthetic": true},
+  "as_of": "2026-09-06",
+  "valid_until": "2026-12-06",
+  "status": "active",
+  "confidence": "low",
+  "domains": ["developer-tooling"],
+  "source_references": [
+    {
+      "id": "source.synthetic-inference",
+      "title": "Synthetic inference source",
+      "url": "https://example.invalid/synthetic-inference",
+      "author": null,
+      "source_type": "synthetic_fixture",
+      "published_at": null,
+      "retrieved_at": "2026-09-06",
+      "primary": true,
+      "synthetic": true,
+      "evidence_scope": "Synthetic source for a deliberately invalid inference.",
+      "archive_url": null,
+      "content_hash": null,
+      "notes": null
+    }
+  ],
+  "principles": [
+    {
+      "id": "missing-basis",
+      "statement": "This inference deliberately omits its required inference basis.",
+      "evidence_class": "labeled_inference",
+      "confidence": "low",
+      "source_refs": ["source.synthetic-inference"],
+      "context_dependencies": []
+    }
+  ],
+  "signature_moves": [],
+  "likely_objections": [],
+  "anti_patterns": [],
+  "context_dependencies": [],
+  "abstention_boundaries": [{"domain": "everything", "reason": "This fixture is deliberately invalid."}],
+  "open_questions": []
+}

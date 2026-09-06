@@ -1,0 +1,92 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-101",
+  "project": "guru-benchmark",
+  "status": "done",
+  "summary": "Define expert lens and evidence schemas",
+  "description": "Define immutable expert lens, evidence class, provenance, confidence, validity, objection, and abstention contracts.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**"
+    ],
+    "modify": [
+      "schemas/**",
+      "lenses/fixtures/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "Direct evidence, built patterns, labeled inference, confidence, source references, objections, and abstention boundaries validate; unsupported claims fail."
+  ],
+  "verification": [
+    "python3 -m unittest tests.test_lens_contract -v && make check"
+  ],
+  "claim": {
+    "agent": "hermes",
+    "claimed_at": "2026-09-06T09:02:11+02:00"
+  },
+  "work_status": "completed",
+  "review_status": "review",
+  "review_history": [],
+  "evidence": [
+    {
+      "schema": "go-workflow.finish-evidence.v1",
+      "created_at": "2026-09-06T09:08:26+02:00",
+      "task_id": "GB-101",
+      "agent": "hermes",
+      "summary": "changed_files=schemas/source-reference.schema.json,schemas/expert-lens.schema.json,lenses/fixtures/valid/synthetic-systems-builder.json,lenses/fixtures/invalid/internet-stereotype.json,lenses/fixtures/invalid/unlabeled-inference.json,tests/test_lens_contract.py; verification=python3 -m unittest tests.test_lens_contract -v && make check; result=passed 11 tests; critic=unsupported stereotypes unsourced claims unlabeled inference and non-direct excerpts rejected; runtime=hermes",
+      "changed_files": [
+        "schemas/source-reference.schema.json",
+        "schemas/expert-lens.schema.json",
+        "lenses/fixtures/valid/synthetic-systems-builder.json",
+        "lenses/fixtures/invalid/internet-stereotype.json",
+        "lenses/fixtures/invalid/unlabeled-inference.json",
+        "tests/test_lens_contract.py"
+      ],
+      "no_diff": false,
+      "verification": {
+        "command": "python3 -m unittest tests.test_lens_contract -v && make check",
+        "result": "passed 11 tests"
+      },
+      "runtime": {
+        "agent": "hermes",
+        "runtime": "hermes",
+        "model": null,
+        "billing_mode": "unknown"
+      },
+      "usage": {
+        "schema": "go-workflow.usage-attribution.v1",
+        "runtime_kind": "hermes",
+        "billing_mode": "unknown",
+        "owner": "hermes",
+        "model": null,
+        "token_estimate": null,
+        "api_equivalent_cost_usd": null,
+        "provider_invoice_cost_usd": null,
+        "cost_label": "api_equivalent_not_invoice_cost"
+      },
+      "review": {
+        "outcome": "unsupported stereotypes unsourced claims unlabeled inference and non-direct excerpts rejected",
+        "skip_reason": null
+      }
+    }
+  ],
+  "architecture": {
+    "impact": "material",
+    "scope_refs": [
+      "project-boundary"
+    ],
+    "concerns": [
+      "Expert identity, evidence provenance, inference labels, validity windows, and public attribution are canonical trust-boundary contracts."
+    ],
+    "decision_ids": [
+      "GB-ADR-001"
+    ],
+    "conformance_required": true,
+    "human_gate": "none"
+  }
+}

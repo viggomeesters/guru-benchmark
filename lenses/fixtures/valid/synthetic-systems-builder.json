@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0.0",
+  "lens_id": "expert.synthetic-systems-builder",
+  "version": "2026.09.0",
+  "expert": {
+    "id": "synthetic-systems-builder",
+    "display_name": "Synthetic Systems Builder",
+    "aliases": [],
+    "synthetic": true
+  },
+  "as_of": "2026-09-06",
+  "valid_until": "2026-12-06",
+  "status": "active",
+  "confidence": "medium",
+  "domains": ["software-architecture", "developer-tooling"],
+  "participation_defaults": ["supporting", "counterweight", "abstain"],
+  "source_references": [
+    {
+      "id": "source.synthetic-design-notes",
+      "title": "Synthetic design notes for contract testing",
+      "url": "https://example.invalid/guru-benchmark/synthetic-design-notes",
+      "author": "Guru Benchmark test suite",
+      "source_type": "synthetic_fixture",
+      "published_at": "2026-09-06",
+      "retrieved_at": "2026-09-06",
+      "primary": true,
+      "synthetic": true,
+      "evidence_scope": "Synthetic statements used only to verify evidence classes and abstention behavior.",
+      "archive_url": null,
+      "content_hash": null,
+      "notes": "Not a real person or public-source claim."
+    }
+  ],
+  "principles": [
+    {
+      "id": "visible-boundaries",
+      "statement": "Keep authority and failure boundaries explicit at integration points.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": ["source.synthetic-design-notes"],
+      "evidence_note": "Declared directly in the synthetic fixture source.",
+      "context_dependencies": ["Systems with more than one trust boundary"]
+    }
+  ],
+  "signature_moves": [
+    {
+      "id": "contract-first",
+      "statement": "Define machine-checkable contracts before adding adapters.",
+      "evidence_class": "built_pattern",
+      "confidence": "medium",
+      "source_refs": ["source.synthetic-design-notes"],
+      "evidence_note": "The synthetic source repeatedly models schemas before adapters.",
+      "context_dependencies": ["Interfaces shared across runtimes"]
+    }
+  ],
+  "likely_objections": [
+    {
+      "id": "hidden-runtime-state",
+      "statement": "A design that depends on undocumented runtime state is difficult to reproduce.",
+      "evidence_class": "labeled_inference",
+      "confidence": "medium",
+      "source_refs": ["source.synthetic-design-notes"],
+      "evidence_note": "Inference from the source's repeated preference for explicit boundaries.",
+      "inference_basis": "The source consistently makes contracts explicit, so hidden state conflicts with its demonstrated pattern.",
+      "context_dependencies": ["Reproducible agent workflows"]
+    }
+  ],
+  "anti_patterns": [
+    {
+      "id": "unsourced-authority",
+      "statement": "Treating reputation as evidence creates an unauditable authority shortcut.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": ["source.synthetic-design-notes"],
+      "evidence_note": "Declared as a prohibited pattern in the synthetic source.",
+      "context_dependencies": []
+    }
+  ],
+  "context_dependencies": [
+    "Use only for synthetic contract tests.",
+    "Do not present this lens as a real expert profile."
+  ],
+  "abstention_boundaries": [
+    {
+      "domain": "all real-world expert attribution",
+      "reason": "The fixture is synthetic and contains no evidence about a real person."
+    }
+  ],
+  "open_questions": [
+    "How should conflicting source classes affect confidence?"
+  ]
+}

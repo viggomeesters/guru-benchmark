@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viggomeesters.github.io/guru-benchmark/schemas/source-reference.schema.json",
+  "title": "Guru Benchmark Source Reference",
+  "description": "A dated public source used to support an expert-lens claim.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "url",
+    "source_type",
+    "published_at",
+    "retrieved_at",
+    "primary",
+    "synthetic",
+    "evidence_scope"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^source\\.[a-z0-9][a-z0-9.-]+$"
+    },
+    "title": {"type": "string", "minLength": 3, "maxLength": 240},
+    "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+    "author": {"type": ["string", "null"], "maxLength": 160},
+    "source_type": {
+      "enum": [
+        "official_documentation",
+        "authored_repository",
+        "authored_essay",
+        "authored_post",
+        "talk",
+        "interview",
+        "paper",
+        "synthetic_fixture"
+      ]
+    },
+    "published_at": {"type": ["string", "null"], "format": "date"},
+    "retrieved_at": {"type": "string", "format": "date"},
+    "primary": {"type": "boolean"},
+    "synthetic": {"type": "boolean"},
+    "evidence_scope": {"type": "string", "minLength": 8, "maxLength": 500},
+    "archive_url": {"type": ["string", "null"], "format": "uri"},
+    "content_hash": {
+      "type": ["string", "null"],
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "notes": {"type": ["string", "null"], "maxLength": 500}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"synthetic": {"const": true}}, "required": ["synthetic"]},
+      "then": {"properties": {"source_type": {"const": "synthetic_fixture"}}}
+    }
+  ]
+}
