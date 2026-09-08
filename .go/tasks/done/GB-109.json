@@ -1,0 +1,98 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-109",
+  "project": "guru-benchmark",
+  "status": "done",
+  "summary": "Run a public-safe real-case pilot",
+  "description": "Compare one real Guru Benchmark review against a normal technical review and convert weaknesses into repair tasks.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**"
+    ],
+    "modify": [
+      "cases/**",
+      "docs/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "The case measures distinct falsifiable value and records limitations without private data."
+  ],
+  "verification": [
+    "make check"
+  ],
+  "claim": {
+    "agent": "codex",
+    "claimed_at": "2026-09-08T09:43:36+02:00"
+  },
+  "work_status": "completed",
+  "review_status": "review",
+  "review_history": [],
+  "evidence": [
+    {
+      "schema": "go-workflow.finish-evidence.v1",
+      "created_at": "2026-09-08T09:44:52+02:00",
+      "task_id": "GB-109",
+      "agent": "codex",
+      "summary": "verification_command=PYTHONPATH=src python3 -m unittest tests.test_council_completeness -v && make check; verification_result=passed 3 focused tests 120 total tests and all repository gates; critic=independent release critic green; runtime=codex; billing_mode=subscription",
+      "changed_files": [
+        ".go/architecture/events.jsonl",
+        ".go/runs/events.jsonl",
+        ".go/tasks/open/GB-109.json",
+        ".go/tasks/open/GB-119.json",
+        ".go/tasks/active/GB-109.json",
+        ".go/tasks/active/GB-119.json",
+        "cases/founding-council/comparison.json",
+        "cases/founding-council/context.json",
+        "cases/founding-council/evaluation.json",
+        "cases/founding-council/gap-audit.json",
+        "cases/founding-council/verdict.md",
+        "tests/test_council_completeness.py"
+      ],
+      "no_diff": false,
+      "verification": {
+        "command": "PYTHONPATH=src python3 -m unittest tests.test_council_completeness -v && make check",
+        "result": "passed 3 focused tests 120 total tests and all repository gates"
+      },
+      "runtime": {
+        "agent": "codex",
+        "runtime": "codex",
+        "model": null,
+        "billing_mode": "subscription"
+      },
+      "usage": {
+        "schema": "go-workflow.usage-attribution.v1",
+        "runtime_kind": "codex",
+        "billing_mode": "subscription",
+        "owner": "codex",
+        "model": null,
+        "token_estimate": null,
+        "api_equivalent_cost_usd": null,
+        "provider_invoice_cost_usd": null,
+        "cost_label": "api_equivalent_not_invoice_cost"
+      },
+      "review": {
+        "outcome": "independent release critic green",
+        "skip_reason": null
+      }
+    }
+  ],
+  "architecture": {
+    "impact": "material",
+    "scope_refs": [
+      "project-boundary"
+    ],
+    "concerns": [
+      "self-benchmark-evidence"
+    ],
+    "decision_ids": [
+      "GB-ADR-001"
+    ],
+    "conformance_required": true,
+    "human_gate": "none"
+  }
+}

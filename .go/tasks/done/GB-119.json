@@ -1,0 +1,106 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-119",
+  "project": "guru-benchmark",
+  "status": "done",
+  "summary": "Prove founding-council output completeness",
+  "description": "Produce a public-safe, offline, deterministic council evaluation and zero-gap audit covering every pinned founding-council member exactly once.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**",
+      "benchmarks/**",
+      "lenses/**",
+      "sources/**",
+      "src/**"
+    ],
+    "modify": [
+      "cases/founding-council/",
+      "cases/founding-council/**",
+      "docs/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "Every pinned council id resolves one-to-one to an active reviewed real lens and source manifest.",
+    "A fully offline deterministic Guru Verdict contains a visible contribution or evidence-grounded abstention for all seven council members exactly once.",
+    "A machine-checked gap audit reports zero missing lens, source, confidence, copyright, validity, version-pin, and output entries."
+  ],
+  "verification": [
+    "python3 -m unittest tests.test_council_completeness -v && make check"
+  ],
+  "claim": {
+    "agent": "codex",
+    "claimed_at": "2026-09-08T09:43:12+02:00"
+  },
+  "work_status": "completed",
+  "review_status": "review",
+  "review_history": [],
+  "evidence": [
+    {
+      "schema": "go-workflow.finish-evidence.v1",
+      "created_at": "2026-09-08T09:44:53+02:00",
+      "task_id": "GB-119",
+      "agent": "codex",
+      "summary": "verification_command=PYTHONPATH=src python3 -m unittest tests.test_council_completeness -v && make check; verification_result=passed 3 focused tests 120 total tests and all repository gates; critic=independent release critic green; runtime=codex; billing_mode=subscription",
+      "changed_files": [
+        ".go/architecture/events.jsonl",
+        ".go/evidence/events.jsonl",
+        ".go/runs/events.jsonl",
+        ".go/tasks/open/GB-109.json",
+        ".go/tasks/open/GB-119.json",
+        ".go/tasks/active/GB-119.json",
+        ".go/tasks/done/GB-109.json",
+        "cases/founding-council/comparison.json",
+        "cases/founding-council/context.json",
+        "cases/founding-council/evaluation.json",
+        "cases/founding-council/gap-audit.json",
+        "cases/founding-council/verdict.md",
+        "tests/test_council_completeness.py"
+      ],
+      "no_diff": false,
+      "verification": {
+        "command": "PYTHONPATH=src python3 -m unittest tests.test_council_completeness -v && make check",
+        "result": "passed 3 focused tests 120 total tests and all repository gates"
+      },
+      "runtime": {
+        "agent": "codex",
+        "runtime": "codex",
+        "model": null,
+        "billing_mode": "subscription"
+      },
+      "usage": {
+        "schema": "go-workflow.usage-attribution.v1",
+        "runtime_kind": "codex",
+        "billing_mode": "subscription",
+        "owner": "codex",
+        "model": null,
+        "token_estimate": null,
+        "api_equivalent_cost_usd": null,
+        "provider_invoice_cost_usd": null,
+        "cost_label": "api_equivalent_not_invoice_cost"
+      },
+      "review": {
+        "outcome": "independent release critic green",
+        "skip_reason": null
+      }
+    }
+  ],
+  "architecture": {
+    "impact": "material",
+    "scope_refs": [
+      "project-boundary"
+    ],
+    "concerns": [
+      "founding-council-completeness"
+    ],
+    "decision_ids": [
+      "GB-ADR-001"
+    ],
+    "conformance_required": true,
+    "human_gate": "none"
+  }
+}

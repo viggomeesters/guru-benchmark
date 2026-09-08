@@ -1,0 +1,5 @@
+{
+  "schema_version":"1.0.0","audit_id":"founding-council.2026-09-08","benchmark":"guru-ai-engineer@2026.09","evaluated_at":"2026-09-08T08:00:00Z","council_count":7,
+  "gaps":{"lens":[],"source":[],"confidence":[],"copyright":[],"validity":[],"version_pin":[],"output":[]},
+  "gap_count":0,"result":"passed","verification":"tests.test_council_completeness recomputes every category from the pinned repository artifacts and rejects drift."
+}

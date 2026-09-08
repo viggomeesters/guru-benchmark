@@ -1,0 +1,15 @@
+{
+  "schema_version":"1.0.0","context_id":"context.guru-benchmark-repository","version":"2026.09.0","as_of":"2026-09-08","synthetic":false,
+  "subject":{"kind":"repository","name":"Guru Benchmark","description":"The public Guru Benchmark repository, including its contracts, deterministic evaluator, renderer, CLI, expert-lens corpus, tests, and repository-local workflow evidence."},
+  "decision":{"mode":"delta","question":"Is the repository ready to produce a reproducible public-safe verdict with complete founding-council coverage, and what remains before release?","horizon":"current release"},
+  "operating_environment":{"product_stage":"pilot","scale":"One local version-pinned evaluation at a time","lifecycle":"Public open-source repository maintained through repository-local tasks and gates","audience":["developers","technical reviewers","AI agents"]},
+  "dominant_risks":["correctness","provenance","maintainability","recoverability"],
+  "constraints":[
+    {"id":"constraint.offline","category":"technical","statement":"Validation and rendering must complete without network access.","priority":"hard"},
+    {"id":"constraint.public-safe","category":"privacy","statement":"Published output must not contain private data, impersonation, fabricated quotations, or unsupported attribution.","priority":"hard"},
+    {"id":"constraint.replay","category":"operational","statement":"Benchmark, context, lenses, sources, and outputs must use immutable exact versions.","priority":"hard"}
+  ],
+  "assumptions":["The repository-local fixtures and exact lens snapshots remain available with the evaluated commit."],
+  "unknowns":["Human risk acceptance for the public renderer boundary is not yet recorded."],
+  "privacy":{"classification":"public","publishable":true}
+}
