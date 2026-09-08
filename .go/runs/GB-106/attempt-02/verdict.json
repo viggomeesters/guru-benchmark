@@ -1,0 +1,12 @@
+{
+  "schema": "go-workflow.attempt-verdict.v1",
+  "task_id": "GB-106",
+  "attempt": 2,
+  "strategy": "re_approach",
+  "build_status": "failed",
+  "verify_status": "running",
+  "critic_status": "blocking_findings",
+  "repair_status": "not_needed",
+  "judge_status": "retry_or_block",
+  "created_at": "2026-09-08T08:41:52+02:00"
+}

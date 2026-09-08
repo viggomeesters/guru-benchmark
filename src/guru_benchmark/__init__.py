@@ -13,6 +13,7 @@ from .hard_gates import (
     aggregate_with_hard_gates,
     apply_hard_gates,
 )
+from .renderer import RendererError, render, render_evaluation, render_guru_verdict
 
 __all__ = [
     "AggregationError",
@@ -21,9 +22,13 @@ __all__ = [
     "DisagreementResult",
     "HardGateError",
     "HardGateResult",
+    "RendererError",
     "aggregate_with_hard_gates",
     "analyze_disagreement",
     "apply_hard_gates",
     "normalize_weights",
+    "render",
+    "render_evaluation",
+    "render_guru_verdict",
     "weighted_median",
 ]

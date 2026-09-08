@@ -1,0 +1,9 @@
+Status: blocked.
+
+- [renderer.py](/Users/viggomeesters/Documents/Codex/2026-09-06/clone-x20/guru-benchmark/src/guru_benchmark/renderer.py:32) still emits schema-valid belief/endorsement synonyms such as “conviction” and “approval.”
+- [renderer.py](/Users/viggomeesters/Documents/Codex/2026-09-06/clone-x20/guru-benchmark/src/guru_benchmark/renderer.py:36) misses embedded single-quoted claims such as `Claim:'Approved.'`.
+- [renderer.py](/Users/viggomeesters/Documents/Codex/2026-09-06/clone-x20/guru-benchmark/src/guru_benchmark/renderer.py:128) misses the hyphenated named-lens alias `synthetic-systems-builder`.
+
+All four adversarial inputs passed contract validation and were rendered unchanged, violating explicit fail-closed acceptance and the evidence-before-persona principle. The 25 focused tests passed; `make check` reached 103 passing tests but four unrelated installer tests could not create temporary directories in the read-only environment. Scope and required-section/provenance coverage otherwise appear satisfactory.
+
+{"schema":"go-workflow.agent-adapter-result.v1","phase":"critic","status":"blocked","summary":"GB-106 remains blocked: schema-valid embedded single quotations, belief/endorsement synonyms, and a hyphenated named-lens identity are emitted unchanged, violating explicit fail-closed acceptance despite 25 focused tests passing."}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "lens_id": "expert.simon-willison",
+  "lens_version": "2026.09.0",
+  "reviewed_at": "2026-09-07",
+  "review_method": "Separate deterministic acceptance audit in tests/test_pilot_lens.py against the lens schema and repository evidence boundaries.",
+  "checks": {
+    "source_review": "passed",
+    "confidence_review": "passed",
+    "copyright_boundary_review": "passed",
+    "validity_window_review": "passed"
+  },
+  "evidence": {
+    "source_review": "Five dated, HTTPS, primary authored posts are identified; every claim resolves to at least one of their stable source IDs.",
+    "confidence_review": "The lens is restricted to prompt injection and agent security; repeated direct statements are high confidence and the sole synthesis claim is labeled inference at medium confidence.",
+    "copyright_boundary_review": "Only source metadata and original paraphrases are stored; there are no excerpts, mirrored pages, transcripts, article hashes, or copied diagrams.",
+    "validity_window_review": "The immutable snapshot is dated 2026-09-07 and expires after 90 days on 2026-12-06; all source publication and retrieval dates are on or before the snapshot date."
+  },
+  "residual_limits": [
+    "This review verifies the repository artifact and cited authored-source metadata; it does not claim endorsement or comprehensive coverage of Simon Willison's work.",
+    "The snapshot should abstain outside its narrow LLM application-security scope."
+  ]
+}

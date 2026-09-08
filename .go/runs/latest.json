@@ -1,13 +1,11 @@
 {
   "schema": "go-workflow.latest-run.v1",
-  "updated_at": "2026-09-06T21:19:40+02:00",
+  "updated_at": "2026-09-08T08:45:49+02:00",
   "mode": "go-loop",
-  "status": "budget_exhausted",
-  "completed_tasks": [
-    "GB-105"
-  ],
-  "blocked_task": null,
-  "budget_exhausted": true,
+  "status": "blocked",
+  "completed_tasks": [],
+  "blocked_task": "GB-106",
+  "budget_exhausted": false,
   "resume_command": "bash .go/runs/resume.sh",
   "resume_args": [
     "go-loop",
@@ -18,11 +16,11 @@
     "--summary-chars",
     "900",
     "--max-minutes",
-    "120",
+    "45",
     "--max-commands",
-    "80",
+    "60",
     "--command-timeout-seconds",
-    "1800",
+    "600",
     "--max-attempts",
     "3",
     "--checkpoint-every-tasks",
@@ -49,9 +47,9 @@
   "effective_flags": {
     "max_tasks": 1,
     "summary_chars": 900,
-    "max_minutes": 120,
-    "max_commands": 80,
-    "command_timeout_seconds": 1800,
+    "max_minutes": 45,
+    "max_commands": 60,
+    "command_timeout_seconds": 600,
     "max_attempts": 3,
     "build_command": "",
     "critic_command": "",
@@ -64,5 +62,5 @@
     "allow_dirty": true,
     "allow_push": true
   },
-  "next_action": "resume with the persisted go-loop command"
+  "next_action": "repair failing gate or configure build/critic/repair adapter, then rerun go-loop"
 }

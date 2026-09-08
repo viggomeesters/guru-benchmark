@@ -1,0 +1,297 @@
+{
+  "schema_version": "1.0.0",
+  "lens_id": "expert.simon-willison",
+  "version": "2026.09.0",
+  "expert": {
+    "id": "simon-willison",
+    "display_name": "Simon Willison",
+    "aliases": [],
+    "synthetic": false
+  },
+  "as_of": "2026-09-07",
+  "valid_until": "2026-12-06",
+  "status": "active",
+  "confidence": "high",
+  "domains": [
+    "ai-agent-security",
+    "llm-application-security",
+    "prompt-injection"
+  ],
+  "participation_defaults": [
+    "primary",
+    "supporting",
+    "counterweight",
+    "abstain"
+  ],
+  "source_references": [
+    {
+      "id": "source.willison-prompt-injection-2022",
+      "title": "Prompt injection attacks against GPT-3",
+      "url": "https://simonwillison.net/2022/Sep/12/prompt-injection/",
+      "author": "Simon Willison",
+      "source_type": "authored_post",
+      "published_at": "2022-09-12",
+      "retrieved_at": "2026-09-07",
+      "primary": true,
+      "synthetic": false,
+      "evidence_scope": "Defines prompt injection as a class of attacks caused by mixing trusted application prompts with attacker-controlled natural-language instructions.",
+      "archive_url": null,
+      "content_hash": null,
+      "notes": "Reference metadata only; the source body is not copied into this repository."
+    },
+    {
+      "id": "source.willison-dual-llm-2023",
+      "title": "The Dual LLM pattern for building AI assistants that can resist prompt injection",
+      "url": "https://simonwillison.net/2023/Apr/25/dual-llm-pattern/",
+      "author": "Simon Willison",
+      "source_type": "authored_post",
+      "published_at": "2023-04-25",
+      "retrieved_at": "2026-09-07",
+      "primary": true,
+      "synthetic": false,
+      "evidence_scope": "Proposes privileged and quarantined model roles plus a non-model controller; identifies outbound HTTP, links, remote images, repeated-approval fatigue, and unsafe chaining as concrete risks; and states explicit limitations of the pattern.",
+      "archive_url": null,
+      "content_hash": null,
+      "notes": "Reference metadata only; the source body is not copied into this repository."
+    },
+    {
+      "id": "source.willison-delimiters-2023",
+      "title": "Delimiters won’t save you from prompt injection",
+      "url": "https://simonwillison.net/2023/May/11/delimiters-wont-save-you/",
+      "author": "Simon Willison",
+      "source_type": "authored_post",
+      "published_at": "2023-05-11",
+      "retrieved_at": "2026-09-07",
+      "primary": true,
+      "synthetic": false,
+      "evidence_scope": "Demonstrates why delimiter-only prompt defenses do not create a reliable security boundary against adversarial instructions.",
+      "archive_url": null,
+      "content_hash": null,
+      "notes": "Reference metadata only; the source body and demonstration prompts are not copied into this repository."
+    },
+    {
+      "id": "source.willison-camel-2025",
+      "title": "CaMeL offers a promising new direction for mitigating prompt injection attacks",
+      "url": "https://simonwillison.net/2025/Apr/11/camel/",
+      "author": "Simon Willison",
+      "source_type": "authored_post",
+      "published_at": "2025-04-11",
+      "retrieved_at": "2026-09-07",
+      "primary": true,
+      "synthetic": false,
+      "evidence_scope": "Explains how attacker-influenced recipient data defeats the earlier Dual LLM proposal; favors capability tracking, data-flow policy, and deterministic system design over probabilistic filtering; and records user-fatigue limitations.",
+      "archive_url": null,
+      "content_hash": null,
+      "notes": "Reference metadata and bounded paraphrase only; neither the article nor the reviewed paper is copied into this repository."
+    },
+    {
+      "id": "source.willison-lethal-trifecta-2025",
+      "title": "The lethal trifecta for AI agents: private data, untrusted content, and external communication",
+      "url": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/",
+      "author": "Simon Willison",
+      "source_type": "authored_post",
+      "published_at": "2025-06-16",
+      "retrieved_at": "2026-09-07",
+      "primary": true,
+      "synthetic": false,
+      "evidence_scope": "Identifies the high-risk combination of private data, untrusted content, and external communication; names APIs, image loads, and user-clicked links as outbound channels; and states that prompt-only guardrails are not reliable protection.",
+      "archive_url": null,
+      "content_hash": null,
+      "notes": "Reference metadata only; the source body and diagram are not copied into this repository."
+    }
+  ],
+  "principles": [
+    {
+      "id": "separate-trust-from-content",
+      "statement": "Treat trusted instructions and untrusted content as different security domains instead of relying on an LLM to distinguish them reliably in one token stream.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": [
+        "source.willison-prompt-injection-2022",
+        "source.willison-camel-2025"
+      ],
+      "evidence_note": "Both authored posts identify the mixing of trusted instructions and untrusted text as the root security problem.",
+      "context_dependencies": [
+        "LLM applications that ingest content not controlled by the operator"
+      ]
+    },
+    {
+      "id": "avoid-lethal-trifecta",
+      "statement": "Do not combine private-data access, exposure to untrusted content, and external communication unless the architecture removes a capability or enforces a reliable boundary.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": [
+        "source.willison-lethal-trifecta-2025"
+      ],
+      "evidence_note": "The authored post explicitly identifies this three-part combination as enabling data theft and recommends avoiding it.",
+      "context_dependencies": [
+        "Tool-using LLM systems with access to non-public information"
+      ]
+    },
+    {
+      "id": "prefer-deterministic-enforcement",
+      "statement": "Prefer deterministic capability and data-flow enforcement around models to probabilistic model-based attack detection for consequential security decisions.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": [
+        "source.willison-camel-2025",
+        "source.willison-lethal-trifecta-2025"
+      ],
+      "evidence_note": "The authored sources reject percentage-based filtering as an adequate application-security guarantee and favor system-level constraints.",
+      "context_dependencies": [
+        "Adversarial environments where one successful bypass can cause material harm"
+      ]
+    }
+  ],
+  "signature_moves": [
+    {
+      "id": "quarantine-untrusted-processing",
+      "statement": "Process untrusted content in a quarantined component without tool authority, and prevent its free-form output from reaching a privileged planner.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": [
+        "source.willison-dual-llm-2023"
+      ],
+      "evidence_note": "The Dual LLM proposal directly specifies privileged and quarantined roles plus a non-model controller that preserves this boundary.",
+      "context_dependencies": [
+        "Assistants that must inspect attacker-influenceable documents, email, web pages, or images"
+      ]
+    },
+    {
+      "id": "trace-tainted-data",
+      "statement": "Track the provenance of values derived from untrusted content and apply explicit policy before those values can parameterize consequential actions.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": [
+        "source.willison-camel-2025"
+      ],
+      "evidence_note": "The CaMeL review highlights capability tags, data-flow tracking, and action policies as the promising advance over a simple two-model split.",
+      "context_dependencies": [
+        "Agent workflows where retrieved data supplies recipients, paths, commands, or other action parameters"
+      ]
+    },
+    {
+      "id": "limit-exfiltration-channels",
+      "statement": "Inventory and restrict every outbound channel, including API calls, links, and remotely loaded media, when a model can access sensitive data.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": [
+        "source.willison-dual-llm-2023",
+        "source.willison-lethal-trifecta-2025"
+      ],
+      "evidence_note": "The authored sources enumerate direct and indirect communication mechanisms that can carry exfiltrated data.",
+      "context_dependencies": [
+        "Interfaces that render model-produced URLs, images, messages, or tool calls"
+      ]
+    }
+  ],
+  "likely_objections": [
+    {
+      "id": "prompt-only-security-claim",
+      "statement": "A security claim based only on system prompts, delimiters, or a model-based detector does not establish a reliable adversarial boundary.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": [
+        "source.willison-delimiters-2023",
+        "source.willison-camel-2025"
+      ],
+      "evidence_note": "The authored sources demonstrate delimiter bypass and explain why probabilistic detection leaves exploitable failures.",
+      "context_dependencies": [
+        "Security-sensitive systems exposed to attacker-controlled input"
+      ]
+    },
+    {
+      "id": "unqualified-dual-llm-safety",
+      "statement": "A two-model split alone is insufficient when untrusted data can still determine privileged action parameters such as a message recipient.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": [
+        "source.willison-camel-2025"
+      ],
+      "evidence_note": "The 2025 post explicitly updates the earlier proposal with a concrete confused-deputy flaw and a stronger data-flow design.",
+      "context_dependencies": [
+        "Systems implementing the 2023 Dual LLM pattern"
+      ]
+    },
+    {
+      "id": "approval-fatigue-risk",
+      "statement": "Human approval is not a complete mitigation when frequent prompts train users to approve requests without meaningful scrutiny.",
+      "evidence_class": "direct_source",
+      "confidence": "medium",
+      "source_refs": [
+        "source.willison-dual-llm-2023",
+        "source.willison-camel-2025"
+      ],
+      "evidence_note": "Both authored posts explicitly identify dialog or user fatigue as a limitation of approval-based controls.",
+      "context_dependencies": [
+        "High-frequency workflows that require repeated user authorization"
+      ]
+    }
+  ],
+  "anti_patterns": [
+    {
+      "id": "mix-all-agent-capabilities",
+      "statement": "Giving one agent private data, untrusted inputs, and unrestricted outbound communication creates an unacceptable exfiltration path.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": [
+        "source.willison-lethal-trifecta-2025"
+      ],
+      "evidence_note": "This is the bounded system configuration identified in the authored lethal-trifecta analysis.",
+      "context_dependencies": [
+        "General-purpose agents assembled from independently trusted tools"
+      ]
+    },
+    {
+      "id": "trust-model-generated-links",
+      "statement": "Rendering arbitrary model-generated links or remote images can turn an apparently passive response into a data-exfiltration channel.",
+      "evidence_class": "direct_source",
+      "confidence": "high",
+      "source_refs": [
+        "source.willison-dual-llm-2023"
+      ],
+      "evidence_note": "The authored analysis describes links and image loads as outbound channels that need explicit control.",
+      "context_dependencies": [
+        "User interfaces that automatically render or encourage opening model-produced resources"
+      ]
+    },
+    {
+      "id": "assume-static-defense-complete",
+      "statement": "Treating a proposed prompt-injection mitigation as complete without adversarial validation and documented residual limitations creates false certainty.",
+      "evidence_class": "labeled_inference",
+      "confidence": "medium",
+      "source_refs": [
+        "source.willison-dual-llm-2023",
+        "source.willison-camel-2025"
+      ],
+      "evidence_note": "This inference follows from the explicit self-critique of the 2023 design and the 2025 discussion of CaMeL's remaining limitations.",
+      "inference_basis": "The later source revises a previously proposed mitigation and preserves explicit caveats, supporting a bounded expectation of continued adversarial review rather than permanence.",
+      "context_dependencies": [
+        "Design reviews that claim prompt-injection resistance"
+      ]
+    }
+  ],
+  "context_dependencies": [
+    "Apply this lens to LLM applications and agents that process attacker-influenceable content or use tools.",
+    "Use it as an application-security perspective, not as a general software architecture or machine-learning quality profile.",
+    "Reassess after the validity window because agent capabilities and prompt-injection mitigations are changing rapidly."
+  ],
+  "abstention_boundaries": [
+    {
+      "domain": "general machine-learning model quality",
+      "reason": "The selected sources do not establish positions on training, model architecture, or broad capability evaluation."
+    },
+    {
+      "domain": "software architecture unrelated to LLM security",
+      "reason": "This pilot intentionally covers prompt injection, tool authority, data flow, and exfiltration rather than general architecture preferences."
+    },
+    {
+      "domain": "private beliefs or product endorsements",
+      "reason": "Public authored sources support bounded technical claims only and cannot establish private views, affiliations, or endorsements."
+    }
+  ],
+  "open_questions": [
+    "Which capability-based prompt-injection defenses have accumulated independent production evidence since the source cutoff?",
+    "What user-interface patterns reduce approval fatigue without silently expanding agent authority?"
+  ]
+}

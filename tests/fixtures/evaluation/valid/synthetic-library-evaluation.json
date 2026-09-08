@@ -93,7 +93,7 @@
       "lens_id": "expert.synthetic-systems-builder",
       "role": "primary",
       "weight": 1.0,
-      "weight_rationale": "This is the only supplied lens with relevant, source-backed contract expertise.",
+      "weight_rationale": "This is the only supplied evidence with relevant, source-backed contract expertise.",
       "contribution": "Prefer a replayable immutable input over a moving alias.",
       "confidence": "medium",
       "evidence_refs": ["north-star.immutable-pin"],
@@ -103,7 +103,7 @@
       "lens_id": "expert.synthetic-abstainer-one",
       "role": "abstain",
       "weight": 0,
-      "weight_rationale": "No relevant source-backed lens was supplied for this council member.",
+      "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
       "contribution": "No relevant synthetic evidence was supplied.",
       "confidence": "low",
       "evidence_refs": [],
@@ -113,7 +113,7 @@
       "lens_id": "expert.synthetic-abstainer-two",
       "role": "abstain",
       "weight": 0,
-      "weight_rationale": "No relevant source-backed lens was supplied for this council member.",
+      "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
       "contribution": "No relevant synthetic evidence was supplied.",
       "confidence": "low",
       "evidence_refs": [],
@@ -123,7 +123,7 @@
       "lens_id": "expert.synthetic-abstainer-three",
       "role": "abstain",
       "weight": 0,
-      "weight_rationale": "No relevant source-backed lens was supplied for this council member.",
+      "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
       "contribution": "No relevant synthetic evidence was supplied.",
       "confidence": "low",
       "evidence_refs": [],
@@ -133,7 +133,7 @@
       "lens_id": "expert.synthetic-abstainer-four",
       "role": "abstain",
       "weight": 0,
-      "weight_rationale": "No relevant source-backed lens was supplied for this council member.",
+      "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
       "contribution": "No relevant synthetic evidence was supplied.",
       "confidence": "low",
       "evidence_refs": [],
@@ -143,7 +143,7 @@
       "lens_id": "expert.synthetic-abstainer-five",
       "role": "abstain",
       "weight": 0,
-      "weight_rationale": "No relevant source-backed lens was supplied for this council member.",
+      "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
       "contribution": "No relevant synthetic evidence was supplied.",
       "confidence": "low",
       "evidence_refs": [],
@@ -153,7 +153,7 @@
       "lens_id": "expert.synthetic-abstainer-six",
       "role": "abstain",
       "weight": 0,
-      "weight_rationale": "No relevant source-backed lens was supplied for this council member.",
+      "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
       "contribution": "No relevant synthetic evidence was supplied.",
       "confidence": "low",
       "evidence_refs": [],
@@ -168,6 +168,6 @@
     }
   ],
   "non_actions": [
-    "Do not treat the synthetic lens as a real expert endorsement."
+    "Do not present the synthetic evidence as a personal attribution."
   ]
 }

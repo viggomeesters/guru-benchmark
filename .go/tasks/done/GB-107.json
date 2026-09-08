@@ -1,0 +1,128 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-107",
+  "project": "guru-benchmark",
+  "status": "done",
+  "summary": "Research and publish one source-grounded pilot lens",
+  "description": "Create and independently review one bounded council lens from public primary sources.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**"
+    ],
+    "modify": [
+      "lenses/",
+      "lenses/**",
+      "sources/",
+      "sources/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "One lens passes source, confidence, copyright-boundary, and validity-window review."
+  ],
+  "verification": [
+    "python3 scripts/validate_contracts.py && make check"
+  ],
+  "claim": {
+    "agent": "codex",
+    "claimed_at": "2026-09-08T09:05:47+02:00"
+  },
+  "work_status": "completed",
+  "review_status": "review",
+  "review_history": [],
+  "evidence": [
+    {
+      "schema": "go-workflow.finish-evidence.v1",
+      "created_at": "2026-09-08T09:08:47+02:00",
+      "task_id": "GB-107",
+      "agent": "codex",
+      "summary": "verification_command=python3 -m unittest tests.test_pilot_lens -v && make check; verification_result=passed 6 focused tests and 112 full tests plus all repository gates; critic=independent read-only critic green after source-metadata linkage repair; runtime=codex; billing_mode=subscription",
+      "changed_files": [
+        ".go/architecture/events.jsonl",
+        ".go/reflections/events.jsonl",
+        ".go/runs/events.jsonl",
+        ".go/runs/latest.json",
+        ".go/runs/resume.sh",
+        ".go/tasks/open/GB-106.json",
+        ".go/tasks/open/GB-107.json",
+        "src/guru_benchmark/__init__.py",
+        "tests/fixtures/evaluation/valid/synthetic-library-evaluation.json",
+        ".go/runs/GB-106/attempt-01/critic.md",
+        ".go/runs/GB-106/attempt-01/deep-critic.txt",
+        ".go/runs/GB-106/attempt-01/diff.patch",
+        ".go/runs/GB-106/attempt-01/prompt.md",
+        ".go/runs/GB-106/attempt-01/verdict.json",
+        ".go/runs/GB-106/attempt-01/verify.log",
+        ".go/runs/GB-106/attempt-02/critic.md",
+        ".go/runs/GB-106/attempt-02/deep-critic.txt",
+        ".go/runs/GB-106/attempt-02/diff.patch",
+        ".go/runs/GB-106/attempt-02/prompt.md",
+        ".go/runs/GB-106/attempt-02/verdict.json",
+        ".go/runs/GB-106/attempt-02/verify.log",
+        ".go/runs/GB-106/attempt-03/critic.md",
+        ".go/runs/GB-106/attempt-03/deep-critic.txt",
+        ".go/runs/GB-106/attempt-03/diff.patch",
+        ".go/runs/GB-106/attempt-03/prompt.md",
+        ".go/runs/GB-106/attempt-03/verdict.json",
+        ".go/runs/GB-106/attempt-03/verify.log",
+        ".go/runs/GB-107/attempt-01/critic.md",
+        ".go/runs/GB-107/attempt-01/diff.patch",
+        ".go/runs/GB-107/attempt-01/prompt.md",
+        ".go/runs/GB-107/attempt-01/verdict.json",
+        ".go/runs/GB-107/attempt-01/verify.log",
+        ".go/tasks/active/GB-107.json",
+        ".go/tasks/blocked/GB-106.json",
+        "lenses/simon-willison/2026.09.0.json",
+        "sources/simon-willison/2026.09.0-review.json",
+        "src/guru_benchmark/renderer.py",
+        "tests/golden/synthetic-library-verdict.md",
+        "tests/test_pilot_lens.py",
+        "tests/test_renderer.py"
+      ],
+      "no_diff": false,
+      "verification": {
+        "command": "python3 -m unittest tests.test_pilot_lens -v && make check",
+        "result": "passed 6 focused tests and 112 full tests plus all repository gates"
+      },
+      "runtime": {
+        "agent": "codex",
+        "runtime": "codex",
+        "model": null,
+        "billing_mode": "subscription"
+      },
+      "usage": {
+        "schema": "go-workflow.usage-attribution.v1",
+        "runtime_kind": "codex",
+        "billing_mode": "subscription",
+        "owner": "codex",
+        "model": null,
+        "token_estimate": null,
+        "api_equivalent_cost_usd": null,
+        "provider_invoice_cost_usd": null,
+        "cost_label": "api_equivalent_not_invoice_cost"
+      },
+      "review": {
+        "outcome": "independent read-only critic green after source-metadata linkage repair",
+        "skip_reason": null
+      }
+    }
+  ],
+  "architecture": {
+    "impact": "material",
+    "scope_refs": [
+      "project-boundary"
+    ],
+    "concerns": [
+      "public-source-evidence"
+    ],
+    "decision_ids": [
+      "GB-ADR-001"
+    ],
+    "conformance_required": true,
+    "human_gate": "none"
+  }
+}
