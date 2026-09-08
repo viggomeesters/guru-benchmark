@@ -1,0 +1,91 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-106",
+  "project": "guru-benchmark",
+  "status": "done",
+  "summary": "Build Guru Verdict renderer",
+  "description": "Render the complete public output contract from synthetic evaluated inputs while keeping identities as structured data rather than simulated voices.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**"
+    ],
+    "modify": [
+      "src/guru_benchmark/**",
+      "tests/fixtures/evaluation/**",
+      "tests/golden/",
+      "tests/golden/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "A synthetic evaluation renders every required output section with exact provenance.",
+    "Free public prose fails closed on first-person language, direct quotation, and every named, generic, or pronominal human/lens/council identity independently of attribution verb choice; identity-free analytical statements remain renderable."
+  ],
+  "verification": [
+    "python3 -m unittest tests.test_renderer -v && make check"
+  ],
+  "claim": {
+    "agent": "codex",
+    "claimed_at": "2026-09-08T09:02:05+02:00"
+  },
+  "work_status": "completed",
+  "review_status": "review",
+  "review_history": [],
+  "evidence": [
+    {
+      "schema": "go-workflow.finish-evidence.v1",
+      "created_at": "2026-09-08T11:33:36+02:00",
+      "task_id": "GB-106",
+      "agent": "codex",
+      "summary": "verification_command=PYTHONPATH=src python3 -m unittest tests.test_renderer -v && PATH=/opt/homebrew/bin:$PATH make check; verification_result=passed: renderer tests included in 78 focused tests, 127 full tests, all repository gates valid; critic=independent critic green with zero findings; human_review=approved by Viggo for functional public pseudonym boundary; self_reflect=no durable agent/process improvement needed; no skill/memory/config change; runtime=codex; billing_mode=subscription",
+      "changed_files": [
+        ".go/tasks/blocked/GB-106.json",
+        ".go/tasks/active/GB-106.json"
+      ],
+      "no_diff": false,
+      "verification": {
+        "command": "PYTHONPATH=src python3 -m unittest tests.test_renderer -v && PATH=/opt/homebrew/bin:$PATH make check",
+        "result": "passed: renderer tests included in 78 focused tests, 127 full tests, all repository gates valid"
+      },
+      "runtime": {
+        "agent": "codex",
+        "runtime": "codex",
+        "model": null,
+        "billing_mode": "subscription"
+      },
+      "usage": {
+        "schema": "go-workflow.usage-attribution.v1",
+        "runtime_kind": "codex",
+        "billing_mode": "subscription",
+        "owner": "codex",
+        "model": null,
+        "token_estimate": null,
+        "api_equivalent_cost_usd": null,
+        "provider_invoice_cost_usd": null,
+        "cost_label": "api_equivalent_not_invoice_cost"
+      },
+      "review": {
+        "outcome": "independent critic green with zero findings",
+        "skip_reason": null
+      }
+    }
+  ],
+  "architecture": {
+    "impact": "foundational",
+    "scope_refs": [
+      "project-boundary"
+    ],
+    "concerns": [
+      "public-safety"
+    ],
+    "decision_ids": [
+      "GB-ADR-001"
+    ],
+    "conformance_required": true,
+    "human_gate": "risk_acceptance"
+  }
+}
