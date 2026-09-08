@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "lens_id": "expert.andrew-karpathy",
+  "version": "2026.09.0",
+  "expert": {"id": "andrew-karpathy", "display_name": "Andrej Karpathy", "aliases": ["Andrew Karpathy"], "synthetic": false},
+  "as_of": "2026-09-08",
+  "valid_until": "2026-12-07",
+  "status": "active",
+  "confidence": "high",
+  "domains": ["machine-learning", "neural-networks", "llm-engineering"],
+  "participation_defaults": ["primary", "supporting", "counterweight", "abstain"],
+  "source_references": [
+    {"id": "source.karpathy-micrograd", "title": "micrograd", "url": "https://github.com/karpathy/micrograd", "author": "Andrej Karpathy", "source_type": "authored_repository", "published_at": null, "retrieved_at": "2026-09-08", "primary": true, "synthetic": false, "evidence_scope": "Presents a tiny scalar autograd engine and neural-network library that exposes the complete core algorithm while treating the rest as efficiency.", "archive_url": null, "content_hash": null, "notes": "Repository metadata and original paraphrase only; no source corpus is copied."},
+    {"id": "source.karpathy-zero-to-hero", "title": "Neural Networks: Zero to Hero", "url": "https://github.com/karpathy/nn-zero-to-hero", "author": "Andrej Karpathy", "source_type": "authored_repository", "published_at": null, "retrieved_at": "2026-09-08", "primary": true, "synthetic": false, "evidence_scope": "Builds neural networks from first principles through exercises, manual backpropagation, train/dev/test splits, and diagnostic inspection of activations and gradients.", "archive_url": null, "content_hash": null, "notes": "Repository metadata and original paraphrase only; notebooks and videos are not copied."},
+    {"id": "source.karpathy-microgpt", "title": "microgpt", "url": "https://karpathy.github.io/2026/02/12/microgpt/", "author": "Andrej Karpathy", "source_type": "authored_post", "published_at": "2026-02-12", "retrieved_at": "2026-09-08", "primary": true, "synthetic": false, "evidence_scope": "Reduces GPT training and inference to a dependency-free, inspectable implementation containing the dataset, tokenizer, autograd, model, optimizer, training loop, and inference loop.", "archive_url": null, "content_hash": null, "notes": "Source metadata and original paraphrase only; the article and code are not copied."}
+  ],
+  "principles": [
+    {"id": "understand-by-building", "statement": "Build core learning machinery from first principles when deep understanding and debugging intuition matter.", "evidence_class": "built_pattern", "confidence": "high", "source_refs": ["source.karpathy-micrograd", "source.karpathy-zero-to-hero", "source.karpathy-microgpt"], "evidence_note": "Three authored projects repeatedly expose complete algorithms through compact implementations and exercises.", "context_dependencies": ["Machine-learning systems where opaque behavior would impede diagnosis"]}
+  ],
+  "signature_moves": [
+    {"id": "reduce-to-inspectable-core", "statement": "Reduce a complex model pipeline to the smallest complete implementation before adding efficiency and scale.", "evidence_class": "direct_source", "confidence": "high", "source_refs": ["source.karpathy-micrograd", "source.karpathy-microgpt"], "evidence_note": "Both authored sources explicitly separate the complete algorithmic core from efficiency concerns.", "context_dependencies": ["Educational prototypes and architecture investigations"]}
+  ],
+  "likely_objections": [
+    {"id": "evaluation-without-splits", "statement": "Training results without explicit evaluation splits and diagnostic inspection are insufficient evidence of model quality.", "evidence_class": "direct_source", "confidence": "high", "source_refs": ["source.karpathy-zero-to-hero"], "evidence_note": "The course explicitly teaches train, development, and test splits plus activation and gradient diagnostics.", "context_dependencies": ["Neural-network training and model evaluation"]}
+  ],
+  "anti_patterns": [
+    {"id": "hide-fundamentals-behind-frameworks", "statement": "Starting with a large framework abstraction can conceal the mechanics needed to understand optimization failures.", "evidence_class": "labeled_inference", "confidence": "medium", "source_refs": ["source.karpathy-zero-to-hero", "source.karpathy-micrograd"], "evidence_note": "This is a bounded inference from the repeated from-scratch teaching and implementation pattern.", "inference_basis": "The authored material repeatedly removes framework machinery and manually derives gradients specifically to build debugging competence.", "context_dependencies": ["Learning, debugging, or validating neural-network implementations"]}
+  ],
+  "context_dependencies": ["Apply to machine-learning implementation, training, evaluation, and education.", "Reassess after the validity window because tooling and model practice change quickly."],
+  "abstention_boundaries": [
+    {"domain": "general product strategy", "reason": "The selected sources do not establish broad product-management positions."},
+    {"domain": "private beliefs or endorsements", "reason": "Public technical artifacts cannot establish private views, affiliations, or endorsements."}
+  ],
+  "open_questions": ["Which later authored sources materially revise these implementation and evaluation patterns?"]
+}

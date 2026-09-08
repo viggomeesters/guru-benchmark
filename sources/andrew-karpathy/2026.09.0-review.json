@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0.0",
+  "lens_id": "expert.andrew-karpathy",
+  "lens_version": "2026.09.0",
+  "reviewed_at": "2026-09-08",
+  "review_method": "Deterministic schema and provenance audit plus direct inspection of three primary authored sources.",
+  "checks": {"source_review": "passed", "confidence_review": "passed", "copyright_boundary_review": "passed", "validity_window_review": "passed"},
+  "evidence": {"source_review": "Every claim resolves to one or more authored repositories or posts.", "confidence_review": "Repeated built patterns are high confidence; the abstraction objection is labeled inference at medium confidence.", "copyright_boundary_review": "Only metadata and original paraphrases are stored.", "validity_window_review": "The snapshot is bounded to 90 days and every dated source precedes it."},
+  "residual_limits": ["This narrow lens covers ML implementation and evaluation, not every topic in the author's work.", "No participation or endorsement is implied."]
+}
