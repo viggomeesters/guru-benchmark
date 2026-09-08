@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0.0", "lens_id": "expert.matt-pocock", "lens_version": "2026.09.0", "reviewed_at": "2026-09-08",
+  "review_method": "Deterministic contract audit and direct inspection of four primary authored articles.",
+  "checks": {"source_review": "passed", "confidence_review": "passed", "copyright_boundary_review": "passed", "validity_window_review": "passed"},
+  "evidence": {"source_review": "Every claim maps to an explicit article scope.", "confidence_review": "Claims rest on direct instructional sources within a narrow TypeScript domain.", "copyright_boundary_review": "Only metadata and original paraphrases are stored.", "validity_window_review": "The immutable snapshot has a 90-day validity window."},
+  "residual_limits": ["The lens is restricted to TypeScript type-system practice.", "No participation or endorsement is implied."]
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-114",
+  "project": "guru-benchmark",
+  "status": "done",
+  "summary": "Publish Matt Pocock source-grounded lens",
+  "description": "Create and independently review one bounded Matt Pocock lens from dated public primary sources.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**",
+      "benchmarks/**"
+    ],
+    "modify": [
+      "lenses/matt-pocock/",
+      "lenses/matt-pocock/**",
+      "sources/matt-pocock/",
+      "sources/matt-pocock/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "The Matt Pocock lens passes source, confidence, copyright-boundary, expert-id consistency, and validity-window review without evidence gaps."
+  ],
+  "verification": [
+    "python3 scripts/validate_contracts.py && make check"
+  ],
+  "claim": {
+    "agent": "codex",
+    "claimed_at": "2026-09-08T09:25:20+02:00"
+  },
+  "work_status": "completed",
+  "review_status": "review",
+  "review_history": [],
+  "evidence": [
+    {
+      "schema": "go-workflow.finish-evidence.v1",
+      "created_at": "2026-09-08T09:26:19+02:00",
+      "task_id": "GB-114",
+      "agent": "codex",
+      "summary": "verification_command=python3 -m unittest tests.test_reviewed_lenses -v && make check; verification_result=passed reviewed-lens test and 117 full tests plus all gates; critic=independent critic green; runtime=codex; billing_mode=subscription",
+      "changed_files": [
+        ".go/architecture/events.jsonl",
+        ".go/runs/events.jsonl",
+        ".go/tasks/open/GB-114.json",
+        ".go/tasks/active/GB-114.json",
+        "lenses/matt-pocock/2026.09.0.json",
+        "sources/matt-pocock/2026.09.0-review.json"
+      ],
+      "no_diff": false,
+      "verification": {
+        "command": "python3 -m unittest tests.test_reviewed_lenses -v && make check",
+        "result": "passed reviewed-lens test and 117 full tests plus all gates"
+      },
+      "runtime": {
+        "agent": "codex",
+        "runtime": "codex",
+        "model": null,
+        "billing_mode": "subscription"
+      },
+      "usage": {
+        "schema": "go-workflow.usage-attribution.v1",
+        "runtime_kind": "codex",
+        "billing_mode": "subscription",
+        "owner": "codex",
+        "model": null,
+        "token_estimate": null,
+        "api_equivalent_cost_usd": null,
+        "provider_invoice_cost_usd": null,
+        "cost_label": "api_equivalent_not_invoice_cost"
+      },
+      "review": {
+        "outcome": "independent critic green",
+        "skip_reason": null
+      }
+    }
+  ],
+  "architecture": {
+    "impact": "material",
+    "scope_refs": [
+      "project-boundary"
+    ],
+    "concerns": [
+      "source-grounded-lens"
+    ],
+    "decision_ids": [
+      "GB-ADR-001"
+    ],
+    "conformance_required": true,
+    "human_gate": "none"
+  }
+}

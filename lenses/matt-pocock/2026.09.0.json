@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "lens_id": "expert.matt-pocock",
+  "version": "2026.09.0",
+  "expert": {"id": "matt-pocock", "display_name": "Matt Pocock", "aliases": [], "synthetic": false},
+  "as_of": "2026-09-08", "valid_until": "2026-12-07", "status": "active", "confidence": "high",
+  "domains": ["typescript", "type-safety", "frontend-architecture"],
+  "participation_defaults": ["primary", "supporting", "counterweight", "abstain"],
+  "source_references": [
+    {"id": "source.pocock-discriminated-unions", "title": "TypeScript Discriminated Unions for Frontend Developers", "url": "https://www.totaltypescript.com/discriminated-unions-are-a-devs-best-friend", "author": "Matt Pocock", "source_type": "authored_post", "published_at": null, "retrieved_at": "2026-09-08", "primary": true, "synthetic": false, "evidence_scope": "Shows that discriminated unions encode mutually exclusive application states and prevent invalid combinations allowed by bags of optional properties.", "archive_url": null, "content_hash": null, "notes": "Source metadata and original paraphrase only; article examples are not copied."},
+    {"id": "source.pocock-test-types", "title": "How to test your types", "url": "https://www.totaltypescript.com/how-to-test-your-types", "author": "Matt Pocock", "source_type": "authored_post", "published_at": null, "retrieved_at": "2026-09-08", "primary": true, "synthetic": false, "evidence_scope": "Explains executable type tests with Vitest, compile-time helpers, expected errors, and tsd, especially for public library APIs.", "archive_url": null, "content_hash": null, "notes": "Source metadata and original paraphrase only; code examples are not copied."},
+    {"id": "source.pocock-any-unknown", "title": "An unknown can't always fix an any", "url": "https://www.totaltypescript.com/an-unknown-cant-always-fix-an-any", "author": "Matt Pocock", "source_type": "authored_post", "published_at": null, "retrieved_at": "2026-09-08", "primary": true, "synthetic": false, "evidence_scope": "Explains how any disables and spreads loss of checking, why indiscriminate unknown can shift complexity to runtime, and how generics preserve useful relationships.", "archive_url": null, "content_hash": null, "notes": "Source metadata and original paraphrase only; article code is not copied."},
+    {"id": "source.pocock-type-location", "title": "Where To Put Your Types in Application Code", "url": "https://www.totaltypescript.com/where-to-put-your-types-in-application-code", "author": "Matt Pocock", "source_type": "authored_post", "published_at": null, "retrieved_at": "2026-09-08", "primary": true, "synthetic": false, "evidence_scope": "Recommends colocating single-use types and sharing types at the narrowest scope that actually has multiple consumers.", "archive_url": null, "content_hash": null, "notes": "Source metadata and original paraphrase only; article content is not copied."}
+  ],
+  "principles": [
+    {"id": "make-invalid-states-unrepresentable", "statement": "Represent mutually exclusive application states with discriminated unions so invalid combinations fail at compile time.", "evidence_class": "direct_source", "confidence": "high", "source_refs": ["source.pocock-discriminated-unions"], "evidence_note": "The authored article contrasts discriminated states with invalid bags of optionals.", "context_dependencies": ["TypeScript applications with state-dependent data"]}
+  ],
+  "signature_moves": [
+    {"id": "test-public-types", "statement": "Treat a library's exposed types as an API and verify their positive and negative behavior with executable type tests.", "evidence_class": "direct_source", "confidence": "high", "source_refs": ["source.pocock-test-types"], "evidence_note": "The authored guide explicitly recommends type tests for consumed library APIs.", "context_dependencies": ["Reusable TypeScript libraries"]}
+  ],
+  "likely_objections": [
+    {"id": "type-escape-hatches", "statement": "Replacing difficult types with any or indiscriminate unknown can spread uncertainty or move avoidable complexity into runtime code.", "evidence_class": "direct_source", "confidence": "high", "source_refs": ["source.pocock-any-unknown"], "evidence_note": "The article traces both failure modes and preserves relationships with generics.", "context_dependencies": ["TypeScript utility and application code"]}
+  ],
+  "anti_patterns": [
+    {"id": "centralize-all-types", "statement": "Moving every type to a central file increases distance from its only consumer and creates unnecessary structure.", "evidence_class": "direct_source", "confidence": "high", "source_refs": ["source.pocock-type-location"], "evidence_note": "The authored guide says single-use types should remain colocated and shared types should move only as far as needed.", "context_dependencies": ["TypeScript application organization"]}
+  ],
+  "context_dependencies": ["Apply to TypeScript type design, state modeling, library APIs, and code organization."],
+  "abstention_boundaries": [{"domain": "non-TypeScript architecture", "reason": "The selected sources do not establish general architecture positions outside typed JavaScript systems."}, {"domain": "private beliefs or endorsements", "reason": "Public authored sources cannot establish private views or endorsements."}],
+  "open_questions": ["Which compiler and ecosystem changes require revising these recommendations?"]
+}
