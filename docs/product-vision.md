@@ -24,7 +24,7 @@ The first useful slice is a versioned AI-engineering benchmark with a fixed foun
 - Simon Willison
 - Mitchell Hashimoto
 
-Every council member participates, but relevance and evidence determine whether a lens is primary, supporting, a counterweight, or explicitly abstaining.
+Every council member participates through an exact internal lens pin, while public output uses a unique functional pseudonym. Relevance and evidence determine whether a lens is primary, supporting, a counterweight, or explicitly abstaining.
 
 ## Principles
 

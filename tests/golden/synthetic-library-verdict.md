@@ -57,15 +57,15 @@ None material.
 
 # Guru Contributions
 
-| Lens | Role | Weight | Weight rationale | Contribution | Confidence | Evidence refs | Lens claim refs |
+| Public role | Role | Weight | Weight rationale | Contribution | Confidence | Evidence refs | Lens claim refs |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| expert.synthetic-systems-builder | primary | 1 | This is the only supplied evidence with relevant, source-backed contract expertise. | Prefer a replayable immutable input over a moving alias. | medium | north-star.immutable-pin | contract-first |
-| expert.synthetic-abstainer-one | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
-| expert.synthetic-abstainer-two | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
-| expert.synthetic-abstainer-three | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
-| expert.synthetic-abstainer-four | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
-| expert.synthetic-abstainer-five | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
-| expert.synthetic-abstainer-six | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
+| Model Guru | primary | 1 | This is the only supplied evidence with relevant, source-backed contract expertise. | Prefer a replayable immutable input over a moving alias. | medium | north-star.immutable-pin | contract-first |
+| Type Guru | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
+| Skill Guru | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
+| Simplicity Guru | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
+| Delivery Guru | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
+| Security Guru | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
+| Automation Guru | abstain | 0 | No relevant source-backed evidence was supplied for this participant. | No relevant synthetic evidence was supplied. | low | None | None |
 
 # Next Moves
 
@@ -79,11 +79,11 @@ None material.
 | Context | context.synthetic-library | 2026.09.1 | 2026-09-06 |
 | Source cutoff | source-cutoff | 2026.09.1 | 2026-09-06 |
 
-Lens pins:
+Public role pins:
 
-| Lens | Version | As of |
+| Public role | Version | As of |
 | --- | --- | --- |
-| expert.synthetic-systems-builder | 2026.09.0 | 2026-09-06 |
+| Model Guru | 2026.09.0 | 2026-09-06 |
 
 - Evaluation: `evaluation.synthetic-library.2026-09-07`
 - Generated at: 2026-09-07T12:00:00Z

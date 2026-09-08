@@ -14,6 +14,15 @@ from guru_benchmark.cli import main
 ROOT = Path(__file__).resolve().parents[1]
 CASE = ROOT / "cases/founding-council"
 BENCHMARK = ROOT / "benchmarks/guru-ai-engineer/2026.09.json"
+PUBLIC_LABELS = (
+    "model-guru",
+    "type-guru",
+    "skill-guru",
+    "simplicity-guru",
+    "delivery-guru",
+    "security-guru",
+    "automation-guru",
+)
 
 
 def load(path):
@@ -35,6 +44,10 @@ class FoundingCouncilCompletenessTests(unittest.TestCase):
         gaps = {name: [] for name in self.audit["gaps"]}
         pins = {pin["lens_id"]: pin for pin in self.evaluation["inputs"]["lenses"]}
         outputs = [item["lens_id"] for item in self.evaluation["guru_contributions"]]
+        public_labels = [item["public_label"] for item in self.evaluation["guru_contributions"]]
+        self.assertEqual(list(PUBLIC_LABELS), public_labels)
+        if public_labels != list(PUBLIC_LABELS):
+            gaps["public_label"].append("founding-council")
         for expert_id in self.benchmark["council"]:
             lens = self.lenses.get(expert_id)
             lens_id = f"expert.{expert_id}"
@@ -80,10 +93,12 @@ class FoundingCouncilCompletenessTests(unittest.TestCase):
         self.assertEqual(renders[0], renders[1])
         self.assertEqual((CASE / "verdict.md").read_text(encoding="utf-8"), renders[0])
         for contribution in self.evaluation["guru_contributions"]:
+            label = contribution["public_label"].replace("-", " ").title()
             self.assertEqual(
                 1,
-                renders[0].count(f"| {contribution['lens_id']} | {contribution['role']} |"),
+                renders[0].count(f"| {label} | {contribution['role']} |"),
             )
+            self.assertNotIn(contribution["lens_id"], renders[0])
         self.assertEqual(64, len(hashlib.sha256(renders[0].encode()).hexdigest()))
 
     def test_self_benchmark_comparison_is_public_falsifiable_and_actionable(self):

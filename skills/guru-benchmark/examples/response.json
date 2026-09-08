@@ -18,49 +18,56 @@
   },
   "guru_contributions": [
     {
-      "member": "andrew-karpathy",
+      "member_ref": "andrew-karpathy",
+      "public_label": "model-guru",
       "role": "abstain",
       "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
       "confidence": "high",
       "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
     },
     {
-      "member": "matt-pocock",
+      "member_ref": "matt-pocock",
+      "public_label": "type-guru",
       "role": "abstain",
       "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
       "confidence": "high",
       "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
     },
     {
-      "member": "peter-steinberger",
+      "member_ref": "peter-steinberger",
+      "public_label": "skill-guru",
       "role": "abstain",
       "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
       "confidence": "high",
       "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
     },
     {
-      "member": "rich-hickey",
+      "member_ref": "rich-hickey",
+      "public_label": "simplicity-guru",
       "role": "abstain",
       "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
       "confidence": "high",
       "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
     },
     {
-      "member": "dhh",
+      "member_ref": "dhh",
+      "public_label": "delivery-guru",
       "role": "abstain",
       "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
       "confidence": "high",
       "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
     },
     {
-      "member": "simon-willison",
+      "member_ref": "simon-willison",
+      "public_label": "security-guru",
       "role": "abstain",
       "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
       "confidence": "high",
       "evidence_refs": ["benchmarks/guru-ai-engineer/2026.09.json"]
     },
     {
-      "member": "mitchell-hashimoto",
+      "member_ref": "mitchell-hashimoto",
+      "public_label": "automation-guru",
       "role": "abstain",
       "contribution": "No individual position is asserted until a validated source-grounded lens exists.",
       "confidence": "high",

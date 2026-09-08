@@ -46,7 +46,7 @@ class RendererGoldenTests(unittest.TestCase):
         for heading in headings:
             self.assertEqual(1, rendered.count(heading))
 
-    def test_exact_provenance_and_all_council_rows_remain_visible(self) -> None:
+    def test_exact_provenance_and_all_public_role_rows_remain_visible(self) -> None:
         evaluation = evaluation_fixture()
         rendered = render_guru_verdict(evaluation)
 
@@ -56,8 +56,47 @@ class RendererGoldenTests(unittest.TestCase):
         self.assertIn("current.manifest-test", rendered)
         self.assertIn("north-star.immutable-pin", rendered)
         for contribution in evaluation["guru_contributions"]:
-            row_prefix = f"| {contribution['lens_id']} | {contribution['role']} |"
+            label = contribution["public_label"].replace("-", " ").title()
+            row_prefix = f"| {label} | {contribution['role']} |"
             self.assertEqual(1, rendered.count(row_prefix))
+            self.assertNotIn(contribution["lens_id"], rendered)
+
+    def test_missing_or_uncontrolled_public_role_fails_closed(self) -> None:
+        for value in (None, "andrew-karpathy", "Andrew Karpathy Guru"):
+            with self.subTest(value=value):
+                evaluation = copy.deepcopy(evaluation_fixture())
+                if value is None:
+                    del evaluation["guru_contributions"][0]["public_label"]
+                else:
+                    evaluation["guru_contributions"][0]["public_label"] = value
+                with self.assertRaisesRegex(RendererError, "public_label"):
+                    render_guru_verdict(evaluation)
+
+    def test_duplicate_public_roles_fail_closed(self) -> None:
+        evaluation = copy.deepcopy(evaluation_fixture())
+        evaluation["guru_contributions"][1]["public_label"] = evaluation["guru_contributions"][0]["public_label"]
+        with self.assertRaisesRegex(RendererError, "pinned lens order"):
+            render_guru_verdict(evaluation)
+
+    def test_permuted_public_roles_fail_closed(self) -> None:
+        evaluation = copy.deepcopy(evaluation_fixture())
+        evaluation["guru_contributions"][0]["public_label"], evaluation["guru_contributions"][1]["public_label"] = (
+            evaluation["guru_contributions"][1]["public_label"],
+            evaluation["guru_contributions"][0]["public_label"],
+        )
+        with self.assertRaisesRegex(RendererError, "pinned lens"):
+            render_guru_verdict(evaluation)
+
+    def test_pinned_lens_id_permutation_fails_closed(self) -> None:
+        evaluation = json.loads(
+            (ROOT / "cases/founding-council/evaluation.json").read_text(encoding="utf-8")
+        )
+        evaluation["guru_contributions"][0]["lens_id"], evaluation["guru_contributions"][1]["lens_id"] = (
+            evaluation["guru_contributions"][1]["lens_id"],
+            evaluation["guru_contributions"][0]["lens_id"],
+        )
+        with self.assertRaisesRegex(RendererError, "pinned lens id"):
+            render_guru_verdict(evaluation)
 
     def test_current_and_north_star_scores_are_not_collapsed(self) -> None:
         rendered = render_guru_verdict(evaluation_fixture())

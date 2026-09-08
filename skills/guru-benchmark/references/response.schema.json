@@ -41,12 +41,32 @@
     "guru_contributions": {
       "type": "array",
       "minItems": 7,
+      "maxItems": 7,
+      "prefixItems": [
+        {"properties": {"member_ref": {"const": "andrew-karpathy"}, "public_label": {"const": "model-guru"}}, "required": ["member_ref", "public_label"]},
+        {"properties": {"member_ref": {"const": "matt-pocock"}, "public_label": {"const": "type-guru"}}, "required": ["member_ref", "public_label"]},
+        {"properties": {"member_ref": {"const": "peter-steinberger"}, "public_label": {"const": "skill-guru"}}, "required": ["member_ref", "public_label"]},
+        {"properties": {"member_ref": {"const": "rich-hickey"}, "public_label": {"const": "simplicity-guru"}}, "required": ["member_ref", "public_label"]},
+        {"properties": {"member_ref": {"const": "dhh"}, "public_label": {"const": "delivery-guru"}}, "required": ["member_ref", "public_label"]},
+        {"properties": {"member_ref": {"const": "simon-willison"}, "public_label": {"const": "security-guru"}}, "required": ["member_ref", "public_label"]},
+        {"properties": {"member_ref": {"const": "mitchell-hashimoto"}, "public_label": {"const": "automation-guru"}}, "required": ["member_ref", "public_label"]}
+      ],
+      "allOf": [
+        {"contains": {"properties": {"public_label": {"const": "model-guru"}}, "required": ["public_label"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"public_label": {"const": "type-guru"}}, "required": ["public_label"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"public_label": {"const": "skill-guru"}}, "required": ["public_label"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"public_label": {"const": "simplicity-guru"}}, "required": ["public_label"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"public_label": {"const": "delivery-guru"}}, "required": ["public_label"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"public_label": {"const": "security-guru"}}, "required": ["public_label"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"public_label": {"const": "automation-guru"}}, "required": ["public_label"]}, "minContains": 1, "maxContains": 1}
+      ],
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["member", "role", "contribution", "confidence", "evidence_refs"],
+        "required": ["member_ref", "public_label", "role", "contribution", "confidence", "evidence_refs"],
         "properties": {
-          "member": {"type": "string", "minLength": 2},
+          "member_ref": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+          "public_label": {"enum": ["model-guru", "type-guru", "skill-guru", "simplicity-guru", "delivery-guru", "security-guru", "automation-guru"]},
           "role": {"enum": ["primary", "supporting", "counterweight", "abstain"]},
           "contribution": {"type": "string", "minLength": 2},
           "confidence": {"enum": ["low", "medium", "high"]},

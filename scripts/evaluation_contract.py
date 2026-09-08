@@ -223,8 +223,22 @@ def semantic_errors(
     expected_contribution_ids = [f"expert.{member}" for member in benchmark["council"]]
     contributions = evaluation["guru_contributions"]
     contribution_ids = [item["lens_id"] for item in contributions]
+    public_labels = [item["public_label"] for item in contributions]
+    expected_public_labels = [
+        "model-guru",
+        "type-guru",
+        "skill-guru",
+        "simplicity-guru",
+        "delivery-guru",
+        "security-guru",
+        "automation-guru",
+    ]
     if contribution_ids != expected_contribution_ids:
         errors.append("guru contributions do not account for the pinned council in benchmark order")
+    if public_labels != expected_public_labels:
+        errors.append("guru contribution public labels do not match the pinned council mapping")
+    if len(public_labels) != len(set(public_labels)):
+        errors.append("guru contribution public labels must be unique")
     active_contributions = [
         contribution for contribution in contributions if contribution["role"] != "abstain"
     ]

@@ -102,44 +102,16 @@
     "guru_contributions": {
       "type": "array",
       "minItems": 1,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["lens_id", "role", "weight", "weight_rationale", "contribution", "confidence", "evidence_refs", "lens_claim_refs"],
-        "properties": {
-          "lens_id": {"type": "string", "pattern": "^expert\\.[a-z0-9][a-z0-9-]+$"},
-          "role": {"enum": ["primary", "supporting", "counterweight", "abstain"]},
-          "weight": {"type": "number", "minimum": 0, "maximum": 1},
-          "weight_rationale": {"type": "string", "minLength": 8, "maxLength": 500},
-          "contribution": {"type": "string", "minLength": 3, "maxLength": 1000},
-          "confidence": {"$ref": "#/$defs/confidence"},
-          "evidence_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 2}},
-          "lens_claim_refs": {
-            "type": "array",
-            "uniqueItems": true,
-            "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"}
-          }
-        },
-        "allOf": [
-          {
-            "if": {"properties": {"role": {"const": "abstain"}}, "required": ["role"]},
-            "then": {
-              "properties": {
-                "weight": {"const": 0},
-                "evidence_refs": {"maxItems": 0},
-                "lens_claim_refs": {"maxItems": 0}
-              }
-            },
-            "else": {
-              "properties": {
-                "weight": {"exclusiveMinimum": 0},
-                "evidence_refs": {"minItems": 1},
-                "lens_claim_refs": {"minItems": 1}
-              }
-            }
-          }
-        ]
-      }
+      "prefixItems": [
+        {"allOf": [{"$ref": "#/$defs/guru_contribution"}, {"properties": {"public_label": {"const": "model-guru"}}}]},
+        {"allOf": [{"$ref": "#/$defs/guru_contribution"}, {"properties": {"public_label": {"const": "type-guru"}}}]},
+        {"allOf": [{"$ref": "#/$defs/guru_contribution"}, {"properties": {"public_label": {"const": "skill-guru"}}}]},
+        {"allOf": [{"$ref": "#/$defs/guru_contribution"}, {"properties": {"public_label": {"const": "simplicity-guru"}}}]},
+        {"allOf": [{"$ref": "#/$defs/guru_contribution"}, {"properties": {"public_label": {"const": "delivery-guru"}}}]},
+        {"allOf": [{"$ref": "#/$defs/guru_contribution"}, {"properties": {"public_label": {"const": "security-guru"}}}]},
+        {"allOf": [{"$ref": "#/$defs/guru_contribution"}, {"properties": {"public_label": {"const": "automation-guru"}}}]}
+      ],
+      "items": {"$ref": "#/$defs/guru_contribution"}
     },
     "next_moves": {
       "type": "array",
@@ -211,6 +183,36 @@
   ],
   "$defs": {
     "confidence": {"enum": ["low", "medium", "high"]},
+    "guru_contribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lens_id", "public_label", "role", "weight", "weight_rationale", "contribution", "confidence", "evidence_refs", "lens_claim_refs"],
+      "properties": {
+        "lens_id": {"type": "string", "pattern": "^expert\\.[a-z0-9][a-z0-9-]+$"},
+        "public_label": {"enum": ["model-guru", "type-guru", "skill-guru", "simplicity-guru", "delivery-guru", "security-guru", "automation-guru"]},
+        "role": {"enum": ["primary", "supporting", "counterweight", "abstain"]},
+        "weight": {"type": "number", "minimum": 0, "maximum": 1},
+        "weight_rationale": {"type": "string", "minLength": 8, "maxLength": 500},
+        "contribution": {"type": "string", "minLength": 3, "maxLength": 1000},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 2}},
+        "lens_claim_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"}}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"role": {"const": "abstain"}}, "required": ["role"]},
+          "then": {"properties": {"weight": {"const": 0}, "lens_claim_refs": {"maxItems": 0}, "evidence_refs": {"maxItems": 0}}},
+          "else": {"properties": {"weight": {"exclusiveMinimum": 0}, "evidence_refs": {"minItems": 1}, "lens_claim_refs": {"minItems": 1}}}
+        },
+        {"if": {"properties": {"lens_id": {"const": "expert.andrew-karpathy"}}}, "then": {"properties": {"public_label": {"const": "model-guru"}}}},
+        {"if": {"properties": {"lens_id": {"const": "expert.matt-pocock"}}}, "then": {"properties": {"public_label": {"const": "type-guru"}}}},
+        {"if": {"properties": {"lens_id": {"const": "expert.peter-steinberger"}}}, "then": {"properties": {"public_label": {"const": "skill-guru"}}}},
+        {"if": {"properties": {"lens_id": {"const": "expert.rich-hickey"}}}, "then": {"properties": {"public_label": {"const": "simplicity-guru"}}}},
+        {"if": {"properties": {"lens_id": {"const": "expert.dhh"}}}, "then": {"properties": {"public_label": {"const": "delivery-guru"}}}},
+        {"if": {"properties": {"lens_id": {"const": "expert.simon-willison"}}}, "then": {"properties": {"public_label": {"const": "security-guru"}}}},
+        {"if": {"properties": {"lens_id": {"const": "expert.mitchell-hashimoto"}}}, "then": {"properties": {"public_label": {"const": "automation-guru"}}}}
+      ]
+    },
     "benchmark_pin": {
       "type": "object",
       "additionalProperties": false,

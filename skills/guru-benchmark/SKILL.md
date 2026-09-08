@@ -23,7 +23,7 @@ metadata:
 
 Guru Benchmark turns a concrete system, proposal, repository, or architecture into one source-grounded technical judgment. It uses a versioned benchmark constitution and dated expert lenses; it does **not** imitate people, invent quotations, or treat reputation as evidence.
 
-The skill produces one synthesis rather than seven celebrity essays. Every expert remains visible, but relevance, source quality, confidence, context, disagreement, and abstention determine influence. Hard failures are handled before aggregate scoring and can never be averaged away.
+The skill produces one synthesis rather than seven celebrity essays. Every source-grounded lens remains traceable by an internal member reference, while public prose and tables use a unique functional pseudonym such as `security-guru`. Relevance, source quality, confidence, context, disagreement, and abstention determine influence. Hard failures are handled before aggregate scoring and can never be averaged away.
 
 ## When to Use
 
@@ -138,13 +138,13 @@ Return the following headings in this order:
 2. **Guru Score** — Current Score, North Star Score, confidence, score dispersion, and hard-gate status.
 3. **Ultimate Design** — the target architecture or decision, including boundaries and explicit non-goals.
 4. **Opheldering** — only decision-relevant disagreement, uncertainty, assumptions, and abstentions. Write `None material` when there is none.
-5. **Guru Contributions** — compact table of council member, role, contribution, confidence, and evidence refs; never first-person imitation.
+5. **Guru Contributions** — compact table of functional public pseudonym, role, contribution, confidence, and evidence refs; never expose a personal identity as the speaking label or use first-person imitation.
 6. **Next Moves** — ordered, individually testable actions with expected evidence.
 7. **Pins & Evidence** — benchmark/lens versions, cutoff date, source references, and unresolved evidence gaps.
 
 Structured consumers may request JSON matching `references/response.schema.json`. Human-readable output must remain equivalent to that schema.
 
-When the pinned benchmark lists seven council members, emit exactly seven individual contribution rows in benchmark order. Never collapse them into `all members`, `the council`, or another aggregate row. If the benchmark bundle cannot be read, do not guess its identifier, version, member list, or lens availability: return `hold`, mark those pins unavailable, and name contract access as the unblocker.
+When the pinned benchmark lists seven council members, emit exactly seven individual contribution rows in benchmark order under seven unique controlled public pseudonyms. Keep exact member references only in machine-readable provenance. Never collapse them into `all members`, `the council`, or another aggregate row. If the benchmark bundle cannot be read, do not guess its identifier, version, member list, or lens availability: return `hold`, mark those pins unavailable, and name contract access as the unblocker.
 
 ## Failure and Abstention Rules
 

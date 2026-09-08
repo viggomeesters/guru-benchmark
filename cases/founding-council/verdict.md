@@ -1,6 +1,6 @@
 # Guru Verdict
 
-**conditional_go** — The offline deterministic evaluation chain and all seven source-reviewed inputs are green; release remains conditional on recording the required human acceptance for the public renderer boundary.
+**go** — The offline deterministic evaluation chain, seven source-reviewed inputs, controlled public pseudonyms, and public-safety boundary are green.
 
 # Guru Score
 
@@ -9,7 +9,7 @@
 | Current Score | 8.2 | high |
 | North Star Score | 9.2 | medium |
 | Score dispersion | 1.2 | — |
-| Verdict | conditional_go | high |
+| Verdict | go | high |
 
 ## Hard gates
 
@@ -49,26 +49,25 @@ Observed evidence:
 
 | Dimension | Score | Evidence refs |
 | --- | --- | --- |
-| correctness | 9.5 | north-star.accepted-boundary |
-| conceptual-integrity | 9.5 | north-star.accepted-boundary |
+| correctness | 9.5 | north-star.release |
+| conceptual-integrity | 9.5 | north-star.release |
 | user-leverage | 9 | north-star.release |
-| bounded-agency | 9.5 | north-star.accepted-boundary |
+| bounded-agency | 9.5 | north-star.release |
 | observability | 9 | north-star.release |
 | maintainability | 9 | north-star.release |
 | data-ownership | 9.5 | north-star.release |
-| security-privacy | 9.5 | north-star.accepted-boundary |
+| security-privacy | 9.5 | north-star.release |
 | performance-cost | 9 | north-star.release |
 | reversibility | 9 | north-star.release |
 | interaction-design | 9 | north-star.release |
 
 Conditional evidence:
 
-- `north-star.accepted-boundary`: The recorded human decision would close the sole governance gate on the public renderer boundary. Condition: The designated human explicitly accepts the documented identity-free free-prose boundary. Basis refs: current.safety-tests.
-- `north-star.release`: The tagged release would expose one verified immutable seven-input benchmark snapshot. Condition: The workflow tasks and the required human gate are complete before tagging. Basis refs: current.full-suite, current.version-pins.
+- `north-star.release`: The tagged release would expose one verified immutable seven-input benchmark snapshot. Condition: The green commit remains the exact source for the release tag. Basis refs: current.full-suite, current.version-pins.
 
 Unmet assumptions:
 
-- The designated human accepts the renderer boundary without requesting a material redesign.
+- The dated sources will be reviewed again before the validity windows expire.
 
 # Ultimate Design
 
@@ -81,25 +80,25 @@ Explicit non-actions:
 
 # Opheldering
 
-Required: yes.
+Required: no.
 
-The public renderer boundary still requires human acceptance before release.
+None material.
 
 # Guru Contributions
 
-| Lens | Role | Weight | Weight rationale | Contribution | Confidence | Evidence refs | Lens claim refs |
+| Public role | Role | Weight | Weight rationale | Contribution | Confidence | Evidence refs | Lens claim refs |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| expert.andrew-karpathy | supporting | 0.14 | The first-principles implementation pattern and inspectable diagnostics directly support evaluator transparency. | The scoring and validation core should remain small enough to inspect and exercise through explicit diagnostics. | high | current.full-suite | understand-by-building |
-| expert.matt-pocock | supporting | 0.14 | The contract-modeling pattern is relevant to invalid evaluation states and public API verification. | The contracts should encode mutually exclusive states and test both accepted and rejected public inputs. | high | current.full-suite | make-invalid-states-unrepresentable |
-| expert.peter-steinberger | supporting | 0.14 | The command-line feedback loop aligns with the required offline reproducible interface. | The command-line verification loop should remain the first complete product surface. | high | current.offline-cli | close-the-loop |
-| expert.rich-hickey | counterweight | 0.15 | The structural-simplicity principle counterbalances accumulating workflow and contract machinery. | The evidence, scoring, rendering, and workflow concerns should remain separable so governance does not entangle the runtime. | high | current.version-pins | prefer-unentangled-design |
-| expert.dhh | counterweight | 0.13 | The operational-simplicity principle guards against hosted infrastructure before demand justifies it. | The integrated local-first system should remain until a concrete operating need justifies distribution. | high | current.offline-cli | default-integrated |
-| expert.simon-willison | primary | 0.16 | The security boundary for untrusted content is central to a public renderer and evaluator. | The untrusted content plus consequential capabilities boundary should remain enforced before rendering. | high | current.safety-tests | separate-trust-from-content |
-| expert.mitchell-hashimoto | supporting | 0.14 | The runnable-slice, dogfooding, and inscribed-rules patterns match staged delivery. | The release should contain only demonstrable versioned slices and keep rules executable as code. | high | current.council-audit | build-visible-slices |
+| Model Guru | supporting | 0.14 | The first-principles implementation pattern and inspectable diagnostics directly support evaluator transparency. | The scoring and validation core should remain small enough to inspect and exercise through explicit diagnostics. | high | current.full-suite | understand-by-building |
+| Type Guru | supporting | 0.14 | The contract-modeling pattern is relevant to invalid evaluation states and public API verification. | The contracts should encode mutually exclusive states and test both accepted and rejected public inputs. | high | current.full-suite | make-invalid-states-unrepresentable |
+| Skill Guru | supporting | 0.14 | The command-line feedback loop aligns with the required offline reproducible interface. | The command-line verification loop should remain the first complete product surface. | high | current.offline-cli | close-the-loop |
+| Simplicity Guru | counterweight | 0.15 | The structural-simplicity principle counterbalances accumulating workflow and contract machinery. | The evidence, scoring, rendering, and workflow concerns should remain separable so governance does not entangle the runtime. | high | current.version-pins | prefer-unentangled-design |
+| Delivery Guru | counterweight | 0.13 | The operational-simplicity principle guards against hosted infrastructure before demand justifies it. | The integrated local-first system should remain until a concrete operating need justifies distribution. | high | current.offline-cli | default-integrated |
+| Security Guru | primary | 0.16 | The security boundary for untrusted content is central to a public renderer and evaluator. | The untrusted content plus consequential capabilities boundary should remain enforced before rendering. | high | current.safety-tests | separate-trust-from-content |
+| Automation Guru | supporting | 0.14 | The runnable-slice, dogfooding, and inscribed-rules patterns match staged delivery. | The release should contain only demonstrable versioned slices and keep rules executable as code. | high | current.council-audit | build-visible-slices |
 
 # Next Moves
 
-1. The required human decision for the public renderer boundary must be recorded. Expected evidence: The GB-106 task contains an approved human architecture review and passes finish gates.
+1. The dated source snapshots should be reviewed before the validity windows expire. Expected evidence: The next immutable source review records refreshed dates, claims, confidence, and abstention boundaries.
 2. The immutable release should be created only after every repository-local task is done. Expected evidence: The release commit and tag point to the green seven-input snapshot.
 
 # Pins & Evidence
@@ -110,17 +109,17 @@ The public renderer boundary still requires human acceptance before release.
 | Context | context.guru-benchmark-repository | 2026.09.0 | 2026-09-08 |
 | Source cutoff | source-cutoff | 2026.09.0 | 2026-09-08 |
 
-Lens pins:
+Public role pins:
 
-| Lens | Version | As of |
+| Public role | Version | As of |
 | --- | --- | --- |
-| expert.andrew-karpathy | 2026.09.0 | 2026-09-08 |
-| expert.matt-pocock | 2026.09.0 | 2026-09-08 |
-| expert.peter-steinberger | 2026.09.0 | 2026-09-08 |
-| expert.rich-hickey | 2026.09.0 | 2026-09-08 |
-| expert.dhh | 2026.09.0 | 2026-09-08 |
-| expert.simon-willison | 2026.09.0 | 2026-09-07 |
-| expert.mitchell-hashimoto | 2026.09.0 | 2026-09-08 |
+| Model Guru | 2026.09.0 | 2026-09-08 |
+| Type Guru | 2026.09.0 | 2026-09-08 |
+| Skill Guru | 2026.09.0 | 2026-09-08 |
+| Simplicity Guru | 2026.09.0 | 2026-09-08 |
+| Delivery Guru | 2026.09.0 | 2026-09-08 |
+| Security Guru | 2026.09.0 | 2026-09-07 |
+| Automation Guru | 2026.09.0 | 2026-09-08 |
 
 - Evaluation: `evaluation.guru-benchmark-self-review.2026-09-08`
 - Generated at: 2026-09-08T08:00:00Z

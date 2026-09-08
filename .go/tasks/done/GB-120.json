@@ -1,0 +1,118 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-120",
+  "project": "guru-benchmark",
+  "status": "done",
+  "summary": "Add public role pseudonyms for council lenses",
+  "description": "Keep exact source-grounded lens identities internal for validation while rendering seven unique functional pseudonyms in public verdict output.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**",
+      "src/**",
+      "cases/**"
+    ],
+    "modify": [
+      "schemas/evaluation.schema.json",
+      "scripts/evaluation_contract.py",
+      "src/guru_benchmark/renderer.py",
+      "tests/**",
+      "cases/founding-council/**",
+      "docs/**",
+      "README.md",
+      "skills/guru-benchmark/**"
+    ]
+  },
+  "acceptance": [
+    "Every founding-council contribution has one unique non-personal public role label while the exact lens id remains available in machine-readable provenance.",
+    "Public rendered contribution and pin tables use pseudonyms rather than celebrity identities, and deterministic completeness checks still prove all seven internal mappings with zero gaps."
+  ],
+  "verification": [
+    "PYTHONPATH=src python3 -m unittest tests.test_renderer tests.test_evaluation_contract tests.test_council_completeness -v && make check"
+  ],
+  "claim": {
+    "agent": "codex",
+    "claimed_at": "2026-09-08T10:59:49+02:00"
+  },
+  "work_status": "completed",
+  "review_status": "review",
+  "review_history": [],
+  "evidence": [
+    {
+      "schema": "go-workflow.finish-evidence.v1",
+      "created_at": "2026-09-08T11:32:26+02:00",
+      "task_id": "GB-120",
+      "agent": "codex",
+      "summary": "verification_command=PYTHONPATH=src python3 -m unittest tests.test_renderer tests.test_evaluation_contract tests.test_council_completeness tests.test_skill_contract -q && PATH=/opt/homebrew/bin:$PATH make check; verification_result=passed: 78 focused tests, 127 full tests, all repository gates valid; critic=independent critic green with direct permutation probes and zero findings; self_reflect=no durable agent/process improvement needed; no skill/memory/config change; runtime=codex; billing_mode=subscription",
+      "changed_files": [
+        ".go/architecture/events.jsonl",
+        ".go/hierarchy.json",
+        ".go/runs/events.jsonl",
+        "README.md",
+        "cases/founding-council/comparison.json",
+        "cases/founding-council/context.json",
+        "cases/founding-council/evaluation.json",
+        "cases/founding-council/gap-audit.json",
+        "cases/founding-council/verdict.md",
+        "docs/benchmark-model.md",
+        "docs/product-vision.md",
+        "schemas/evaluation.schema.json",
+        "scripts/evaluation_contract.py",
+        "skills/guru-benchmark/SKILL.md",
+        "skills/guru-benchmark/examples/response.json",
+        "skills/guru-benchmark/references/response.schema.json",
+        "src/guru_benchmark/renderer.py",
+        "tests/fixtures/evaluation/valid/synthetic-library-evaluation.json",
+        "tests/golden/synthetic-library-verdict.md",
+        "tests/test_council_completeness.py",
+        "tests/test_evaluation_contract.py",
+        "tests/test_renderer.py",
+        "tests/test_skill_contract.py",
+        ".go/tasks/active/GB-120.json"
+      ],
+      "no_diff": false,
+      "verification": {
+        "command": "PYTHONPATH=src python3 -m unittest tests.test_renderer tests.test_evaluation_contract tests.test_council_completeness tests.test_skill_contract -q && PATH=/opt/homebrew/bin:$PATH make check",
+        "result": "passed: 78 focused tests, 127 full tests, all repository gates valid"
+      },
+      "runtime": {
+        "agent": "codex",
+        "runtime": "codex",
+        "model": null,
+        "billing_mode": "subscription"
+      },
+      "usage": {
+        "schema": "go-workflow.usage-attribution.v1",
+        "runtime_kind": "codex",
+        "billing_mode": "subscription",
+        "owner": "codex",
+        "model": null,
+        "token_estimate": null,
+        "api_equivalent_cost_usd": null,
+        "provider_invoice_cost_usd": null,
+        "cost_label": "api_equivalent_not_invoice_cost"
+      },
+      "review": {
+        "outcome": "independent critic green with direct permutation probes and zero findings",
+        "skip_reason": null
+      }
+    }
+  ],
+  "architecture": {
+    "impact": "foundational",
+    "scope_refs": [
+      "project-boundary"
+    ],
+    "concerns": [
+      "public-pseudonym-boundary"
+    ],
+    "decision_ids": [
+      "GB-ADR-001"
+    ],
+    "conformance_required": true,
+    "human_gate": "risk_acceptance"
+  }
+}

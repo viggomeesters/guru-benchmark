@@ -74,6 +74,26 @@ _SAFE_TITLECASED_WORDS = {
     "version",
 }
 
+_PUBLIC_ROLE_LABELS = (
+    "model-guru",
+    "type-guru",
+    "skill-guru",
+    "simplicity-guru",
+    "delivery-guru",
+    "security-guru",
+    "automation-guru",
+)
+
+_PUBLIC_ROLE_BY_PINNED_LENS = {
+    "expert.andrew-karpathy": "model-guru",
+    "expert.matt-pocock": "type-guru",
+    "expert.peter-steinberger": "skill-guru",
+    "expert.rich-hickey": "simplicity-guru",
+    "expert.dhh": "delivery-guru",
+    "expert.simon-willison": "security-guru",
+    "expert.mitchell-hashimoto": "automation-guru",
+}
+
 
 def _mapping(value: object, label: str) -> Mapping[str, object]:
     if not isinstance(value, Mapping):
@@ -144,6 +164,20 @@ def _cell(value: object) -> str:
 def _refs(value: object, label: str) -> str:
     values = _sequence(value, label)
     return ", ".join(_text(item, label) for item in values) if values else "None"
+
+
+def _public_label(value: object, label: str) -> str:
+    raw = _text(value, label)
+    if raw not in _PUBLIC_ROLE_LABELS:
+        raise RendererError(f"{label} must be a controlled public_label")
+    return raw.replace("-", " ").title()
+
+
+def _label_for_lens(public_labels: Mapping[str, str], lens_id: str, label: str) -> str:
+    try:
+        return public_labels[lens_id]
+    except KeyError as error:
+        raise RendererError(f"{label} has no public_label mapping") from error
 
 
 def _table(headers: Sequence[str], rows: Sequence[Sequence[object]]) -> list[str]:
@@ -303,6 +337,28 @@ def render_guru_verdict(evaluation: Mapping[str, object]) -> str:
     next_moves = _sequence(_required(evaluation, "next_moves", "evaluation"), "next_moves")
     inputs = _mapping(_required(evaluation, "inputs", "evaluation"), "inputs")
     _reject_public_persona_claims(evaluation, contributions)
+    public_labels: dict[str, str] = {}
+    for index, raw in enumerate(contributions):
+        item = _mapping(raw, f"guru_contributions[{index}]")
+        lens_id = _text(
+            _required(item, "lens_id", f"guru_contributions[{index}]"),
+            f"guru_contributions[{index}].lens_id",
+        )
+        public_labels[lens_id] = _public_label(
+            _required(item, "public_label", f"guru_contributions[{index}]"),
+            f"guru_contributions[{index}].public_label",
+        )
+        if item["public_label"] != _PUBLIC_ROLE_LABELS[index]:
+            raise RendererError(
+                f"guru_contributions[{index}].public_label does not match its pinned lens order"
+            )
+        pinned_label = _PUBLIC_ROLE_BY_PINNED_LENS.get(lens_id)
+        if pinned_label is not None and item["public_label"] != pinned_label:
+            raise RendererError(
+                f"guru_contributions[{index}].public_label does not match its pinned lens id"
+            )
+    if len(public_labels) != len(contributions) or len(set(public_labels.values())) != len(public_labels):
+        raise RendererError("guru contribution public_label values must be unique")
 
     status = _text(_required(evaluation, "status", "evaluation"), "status")
     decision = _text(_required(verdict, "decision", "verdict"), "verdict.decision")
@@ -448,7 +504,7 @@ def render_guru_verdict(evaluation: Mapping[str, object]) -> str:
         item = _mapping(raw, f"guru_contributions[{index}]")
         contribution_rows.append(
             (
-                _required(item, "lens_id", f"guru_contributions[{index}]"),
+                public_labels[_text(_required(item, "lens_id", f"guru_contributions[{index}]"), f"guru_contributions[{index}].lens_id")],
                 _required(item, "role", f"guru_contributions[{index}]"),
                 _required(item, "weight", f"guru_contributions[{index}]"),
                 _required(item, "weight_rationale", f"guru_contributions[{index}]"),
@@ -460,7 +516,7 @@ def render_guru_verdict(evaluation: Mapping[str, object]) -> str:
         )
     lines.extend(
         _table(
-            ("Lens", "Role", "Weight", "Weight rationale", "Contribution", "Confidence", "Evidence refs", "Lens claim refs"),
+            ("Public role", "Role", "Weight", "Weight rationale", "Contribution", "Confidence", "Evidence refs", "Lens claim refs"),
             contribution_rows,
         )
     )
@@ -499,16 +555,20 @@ def render_guru_verdict(evaluation: Mapping[str, object]) -> str:
                 ),
             ),
             "",
-            "Lens pins:",
+            "Public role pins:",
             "",
         ]
     )
     lines.extend(
         _table(
-            ("Lens", "Version", "As of"),
+            ("Public role", "Version", "As of"),
             [
                 (
-                    _required(_mapping(item, f"inputs.lenses[{index}]"), "lens_id", f"inputs.lenses[{index}]"),
+                    _label_for_lens(
+                        public_labels,
+                        _text(_required(_mapping(item, f"inputs.lenses[{index}]"), "lens_id", f"inputs.lenses[{index}]"), f"inputs.lenses[{index}].lens_id"),
+                        f"inputs.lenses[{index}]",
+                    ),
                     _required(_mapping(item, f"inputs.lenses[{index}]"), "version", f"inputs.lenses[{index}]"),
                     _required(_mapping(item, f"inputs.lenses[{index}]"), "as_of", f"inputs.lenses[{index}]"),
                 )

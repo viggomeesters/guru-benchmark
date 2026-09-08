@@ -91,6 +91,7 @@
   "guru_contributions": [
     {
       "lens_id": "expert.synthetic-systems-builder",
+      "public_label": "model-guru",
       "role": "primary",
       "weight": 1.0,
       "weight_rationale": "This is the only supplied evidence with relevant, source-backed contract expertise.",
@@ -101,6 +102,7 @@
     },
     {
       "lens_id": "expert.synthetic-abstainer-one",
+      "public_label": "type-guru",
       "role": "abstain",
       "weight": 0,
       "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
@@ -111,6 +113,7 @@
     },
     {
       "lens_id": "expert.synthetic-abstainer-two",
+      "public_label": "skill-guru",
       "role": "abstain",
       "weight": 0,
       "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
@@ -121,6 +124,7 @@
     },
     {
       "lens_id": "expert.synthetic-abstainer-three",
+      "public_label": "simplicity-guru",
       "role": "abstain",
       "weight": 0,
       "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
@@ -131,6 +135,7 @@
     },
     {
       "lens_id": "expert.synthetic-abstainer-four",
+      "public_label": "delivery-guru",
       "role": "abstain",
       "weight": 0,
       "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
@@ -141,6 +146,7 @@
     },
     {
       "lens_id": "expert.synthetic-abstainer-five",
+      "public_label": "security-guru",
       "role": "abstain",
       "weight": 0,
       "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",
@@ -151,6 +157,7 @@
     },
     {
       "lens_id": "expert.synthetic-abstainer-six",
+      "public_label": "automation-guru",
       "role": "abstain",
       "weight": 0,
       "weight_rationale": "No relevant source-backed evidence was supplied for this participant.",

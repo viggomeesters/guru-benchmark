@@ -42,12 +42,34 @@ class GuruBenchmarkSkillContractTests(unittest.TestCase):
         self.assertIn("north_star", score_required)
         self.assertNotEqual("current", "north_star")
 
-    def test_example_keeps_every_council_member_visible(self):
+    def test_example_keeps_every_council_member_traceable_under_unique_public_roles(self):
         benchmark = json.loads((ROOT / "benchmarks/guru-ai-engineer/2026.09.json").read_text(encoding="utf-8"))
         response = json.loads((SKILL / "examples/response.json").read_text(encoding="utf-8"))
-        members = [item["member"] for item in response["guru_contributions"]]
+        members = [item["member_ref"] for item in response["guru_contributions"]]
         self.assertEqual(benchmark["council"], members)
+        labels = [item["public_label"] for item in response["guru_contributions"]]
+        self.assertEqual(
+            ["model-guru", "type-guru", "skill-guru", "simplicity-guru", "delivery-guru", "security-guru", "automation-guru"],
+            labels,
+        )
         self.assertTrue(all(item["role"] == "abstain" for item in response["guru_contributions"]))
+
+    def test_response_contract_rejects_duplicate_public_roles(self):
+        schema = json.loads((SKILL / "references/response.schema.json").read_text(encoding="utf-8"))
+        response = json.loads((SKILL / "examples/response.json").read_text(encoding="utf-8"))
+        response["guru_contributions"][1]["public_label"] = response["guru_contributions"][0]["public_label"]
+        errors = list(Draft202012Validator(schema).iter_errors(response))
+        self.assertTrue(errors)
+
+    def test_response_contract_rejects_permuted_public_roles(self):
+        schema = json.loads((SKILL / "references/response.schema.json").read_text(encoding="utf-8"))
+        response = json.loads((SKILL / "examples/response.json").read_text(encoding="utf-8"))
+        response["guru_contributions"][0]["public_label"], response["guru_contributions"][1]["public_label"] = (
+            response["guru_contributions"][1]["public_label"],
+            response["guru_contributions"][0]["public_label"],
+        )
+        errors = list(Draft202012Validator(schema).iter_errors(response))
+        self.assertTrue(errors)
 
 
 if __name__ == "__main__":

@@ -264,6 +264,7 @@ class EvaluationContractTests(unittest.TestCase):
         evaluation["guru_contributions"][0]["weight"] = 0.75
         evaluation["guru_contributions"][1] = {
             "lens_id": "expert.synthetic-second-builder",
+            "public_label": "type-guru",
             "role": "supporting",
             "weight": 0.25,
             "weight_rationale": "The second lens adds relevant corroborating contract evidence.",
@@ -382,6 +383,26 @@ class EvaluationContractTests(unittest.TestCase):
         evaluation["guru_contributions"].pop()
         self.assertIn("pinned council", " ".join(contract_errors(evaluation)))
 
+    def test_public_role_labels_are_required_controlled_and_unique(self):
+        missing = evaluation_fixture()
+        del missing["guru_contributions"][0]["public_label"]
+        self.assertIn("public_label", " ".join(contract_errors(missing)))
+
+        uncontrolled = evaluation_fixture()
+        uncontrolled["guru_contributions"][0]["public_label"] = "andrew-karpathy"
+        self.assertIn("public_label", " ".join(contract_errors(uncontrolled)))
+
+        duplicate = evaluation_fixture()
+        duplicate["guru_contributions"][1]["public_label"] = duplicate["guru_contributions"][0]["public_label"]
+        self.assertIn("public_label", " ".join(contract_errors(duplicate)))
+
+        permuted = evaluation_fixture()
+        permuted["guru_contributions"][0]["public_label"], permuted["guru_contributions"][1]["public_label"] = (
+            permuted["guru_contributions"][1]["public_label"],
+            permuted["guru_contributions"][0]["public_label"],
+        )
+        self.assertIn("public_label", " ".join(contract_errors(permuted)))
+
     def test_cross_document_pins_must_match_supplied_snapshots(self):
         mutations = [
             ("benchmark", "version", "2026.08"),
@@ -479,6 +500,7 @@ class EvaluationContractTests(unittest.TestCase):
         evaluation["hard_gates"][0].update(status="unknown", effect="hold", evidence_refs=[])
         evaluation["guru_contributions"][0] = {
             "lens_id": "expert.synthetic-systems-builder",
+            "public_label": "model-guru",
             "role": "abstain",
             "weight": 0,
             "weight_rationale": "The available evidence is insufficient for a defensible weight.",

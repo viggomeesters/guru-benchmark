@@ -108,6 +108,8 @@ Read [`AGENTS.md`](AGENTS.md) before editing. Repository files and `.go` state a
 
 Guru Benchmark is an independent open-source project. It is not affiliated with, approved by, or endorsed by any council member. Expert lenses must cite dated public sources, distinguish direct evidence from inference, and abstain when support is insufficient. Never commit source corpora, private user context, credentials, generated evaluations, or local caches.
 
+Public verdicts identify contributions with unique functional pseudonyms such as `Model Guru` or `Security Guru`. Exact source-grounded lens identities remain available only in machine-readable evaluation provenance; they are not presented as speakers or simulated personas.
+
 ## Contributing and security
 
 - [Contributing](CONTRIBUTING.md)

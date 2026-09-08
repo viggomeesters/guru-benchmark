@@ -2,7 +2,7 @@
 
 ## Council participation
 
-The founding council is fixed for the initial benchmark generation. Every member is represented in an evaluation as one of:
+The founding council is fixed for the initial benchmark generation. Every member is internally traceable through an exact lens pin and represented publicly by one unique functional `*-guru` pseudonym as one of:
 
 - `primary` — direct domain relevance and strong evidence;
 - `supporting` — relevant principles with moderate influence;
