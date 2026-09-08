@@ -58,4 +58,4 @@ Benchmark and lens snapshots are immutable. New evidence creates a new dated ver
 
 ## Initial implementation boundary
 
-Repository foundation ships contracts, schemas, validation, workflow, and public documentation. The evaluator, lens corpus, CLI, and agent adapters remain ordered backlog work. This avoids presenting intended behavior as implemented behavior.
+Repository foundation ships contracts, schemas, validation, workflow, public documentation, an evaluated output renderer, one reviewed lens, and an offline CLI. The complete lens corpus and repeatable self-benchmark remain ordered backlog work.

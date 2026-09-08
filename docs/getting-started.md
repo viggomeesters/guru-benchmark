@@ -35,6 +35,29 @@ src/                 Reserved for task-driven product implementation
 tests/               Contract and later behavioral tests
 ```
 
+## Offline CLI
+
+Run the CLI from a checkout with `PYTHONPATH=src`. Both commands require exact
+local benchmark, context, evaluation, and lens snapshots. They never resolve a
+moving alias or fetch a network resource.
+
+```bash
+PYTHONPATH=src python3 -m guru_benchmark validate \
+  --evaluation tests/fixtures/evaluation/valid/synthetic-library-evaluation.json \
+  --benchmark tests/fixtures/benchmark/synthetic-evaluation-contract.json \
+  --context tests/fixtures/context/valid/synthetic-library-context.json \
+  --lens lenses/fixtures/valid/synthetic-systems-builder.json
+
+PYTHONPATH=src python3 -m guru_benchmark render \
+  --evaluation tests/fixtures/evaluation/valid/synthetic-library-evaluation.json \
+  --benchmark tests/fixtures/benchmark/synthetic-evaluation-contract.json \
+  --context tests/fixtures/context/valid/synthetic-library-context.json \
+  --lens lenses/fixtures/valid/synthetic-systems-builder.json > verdict.md
+```
+
+`render` validates the full cross-document contract before writing Markdown.
+Invalid or mismatched pins fail closed on stderr with a non-zero exit status.
+
 ## Understand the product
 
 Read in this order:
