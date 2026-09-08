@@ -1,0 +1,39 @@
+{
+  "schema": "go-workflow.repo-local.task.v1",
+  "kind": "task",
+  "execution_mode": "agent",
+  "shareable_delivery": "auto",
+  "id": "GB-115",
+  "project": "guru-benchmark",
+  "status": "open",
+  "summary": "Publish Peter Steinberger source-grounded lens",
+  "description": "Create and independently review one bounded Peter Steinberger lens from dated public primary sources.",
+  "scope": {
+    "read": [
+      "docs/**",
+      "schemas/**",
+      "benchmarks/**"
+    ],
+    "modify": [
+      "lenses/peter-steinberger/",
+      "lenses/peter-steinberger/**",
+      "sources/peter-steinberger/",
+      "sources/peter-steinberger/**",
+      "tests/**"
+    ]
+  },
+  "acceptance": [
+    "The Peter Steinberger lens passes source, confidence, copyright-boundary, identity, and validity-window review without evidence gaps."
+  ],
+  "verification": [
+    "python3 scripts/validate_contracts.py && make check"
+  ],
+  "claim": {
+    "agent": null,
+    "claimed_at": null
+  },
+  "work_status": "pending",
+  "review_status": "none",
+  "review_history": [],
+  "evidence": []
+}
